@@ -3,10 +3,9 @@ myApp.controller('AddItemController', function (ItemsService) {
 
     var vm = this;
 
-    vm.itemCategory = false;
-    vm.showCategory = function(value) {
-        vm.itemCategory = value == 'task';
-    }
+    vm.itemCategory = {
+        name: ''
+    };
 
     vm.getItems = function() {
         ItemsService.getItemFromDB;
