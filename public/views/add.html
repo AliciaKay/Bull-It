@@ -6,20 +6,19 @@
             <textarea class="form-control" rows="5" id="details" ng-model="AC.details" placeholder="Item Details"></textarea>
             <div class="radio">
                 <label>
-                    <input id="task" type="radio" name="item" ng-model="itemCategory.name" value="task">Task</label>
+                    <input type="radio" name="item" value="task" ng-model="item">Task</label>
                 <label>
-                    <input id="event" type="radio" name="item" ng-model="itemCategory.name" value="event">Event</label>
+                    <input type="radio" name="item" value="event" ng-model="item">Event</label>
                 <label>
-                    <input id="note" type="radio" name="item" ng-model="itemCategory.name" value="note">Note</label>
+                    <input type="radio" name="item" value="note" ng-model="item">Note</label>
             </div>
-            <p>category = {{itemCategory.name}}</p>
         </div>
 
-        <div class="container" ng-show="itemCategory.name" value="note">
+        <div class="container" ng-show="item === 'note'">
             I show up when you select a note radio button!
         </div>
 
-
+        
         <button ng-click="AC.addItem()" type="button" name="button">Add Item</button>
 </div>
 </form>
