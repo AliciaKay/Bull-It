@@ -1,0 +1,33 @@
+<div>
+    <h1>Enter Item Info</h1>
+    <form>
+        <div class="form-group">
+            <input ng-model="AC.title" name="title" placeholder="Item Name">
+            <textarea class="form-control" rows="5" id="details" ng-model="AC.details" placeholder="Item Details"></textarea>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="item" ng-click="">Task</label>
+                <label>
+                    <input type="radio" name="item" ng-model="itemCategory.name" value="event">Event</label>
+                <label>
+                    <input type="radio" name="item" ng-model="itemCategory.name" value="note">Note</label>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="container" ng-show="item == 'note'">
+                I show up when you select a note radio button!
+            </div>
+            <div class="container" ng-show="item == 'event'">
+                I show up when you select an event radio button!
+            </div>
+            <div class="container" ng-show="item == 'task'">
+                I show up when you select a task radio button!
+            </div>
+
+        </div>
+
+        <button ng-click="AC.addItem()" type="button" name="button">Add Item</button>
+</div>
+</form>
+</div>
