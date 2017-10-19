@@ -5,7 +5,9 @@ var port = process.env.PORT || 5000;
 var app = express();
 
 var index = require('./routes/index');
-var add = require('./routes/add');
+var addEvent = require('./routes/addEvent');
+var addTask = require('./routes/addTask');
+var addNote = require('./routes/addNote');
 
 app.listen(port, function(){
     console.log('Listening on port:', port);
@@ -17,4 +19,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
 app.use('/', index);
-app.use('/add', add);
+app.use('/addEvent', addEvent);
+app.use('/addTask', addTask);
+app.use('/addNote', addNote);

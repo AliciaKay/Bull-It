@@ -5,21 +5,55 @@ myApp.service('ItemsService', function ($http) {
     // // not static!!!! 
     // // dynamic data MUST BE IN AN OBJECT
 
-    self.itemListObj = {item: []};
+    self.eventListObj = {event: []};
+    self.taskListObj = {task: []};
+    self.noteListObj = {note: []};
 
-  self.addItemToDB = function (itemListObject) {
+  self.addEventToDB = function (eventListObject) {
     $http({
       method: 'POST',
-      url: '/add',
-      data: itemListObject
+      url: '/addEvent',
+      data: eventListObject
     }).then(function() {
-      self.getItemFromDB();
+      self.getEventsFromDB();
     })
   }
 
-  self.getItemFromDB = function () {
-    $http.get('/add').then(function (response) {
-      self.itemListObject.data = response.data;
+  self.getEventsFromDB = function () {
+    $http.get('/addEvent').then(function (response) {
+      self.eventListObject = response.data;
+    });
+  }
+
+  self.addTaskToDB = function (taskListObject) {
+    $http({
+      method: 'POST',
+      url: '/addTask',
+      data: taskListObject
+    }).then(function() {
+      self.getTasksFromDB();
+    })
+  }
+
+  self.getTasksFromDB = function () {
+    $http.get('/addTask').then(function (response) {
+      self.taskListObject = response.data;
+    });
+  }
+
+  self.addNoteToDB = function (taskListObject) {
+    $http({
+      method: 'POST',
+      url: '/addNote',
+      data: taskListObject
+    }).then(function() {
+      self.getNotesFromDB();
+    })
+  }
+
+  self.getNotesFromDB = function () {
+    $http.get('/addNote').then(function (response) {
+      self.noteListObject = response.data;
     });
   }
 });
