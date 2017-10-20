@@ -4,12 +4,18 @@ myApp.controller('AddItemController', function (ItemsService) {
     var vm = this;
     vm.todaysDate = new Date();
 
-    vm.getEvents = function() {
-        console.log('in add controller getEvents function');
-        ItemsService.getEventsFromDB;
-    };
-
-    vm.getEvents();
+    vm.clearAllInputs = function () {
+        console.log('clearing all the inputs');
+        vm.title = '';
+        vm.details = '';
+        vm.eventDate = '';
+        vm.eventTime = '';
+        vm.eventLocation = '';
+        vm.priority = '';
+        vm.due = '';
+        vm.pomos = '';
+        vm.note.date='';
+    }
 
     vm.addEvent = function () {
         var eventToSend = {
@@ -21,19 +27,8 @@ myApp.controller('AddItemController', function (ItemsService) {
         }
         console.log('in add controller addEvent function', eventToSend);
         ItemsService.addEventToDB(eventToSend);
-        vm.title = '';
-        vm.details = '';
-        vm.eventDate = '';
-        vm.eventTime = '';
-        vm.eventLocation = '';
+        vm.clearAllInputs();
     };
-
-    vm.getTasks = function() {
-        console.log('in add controller getTasks function');
-        ItemsService.getTasksFromDB;
-    };
-
-    vm.getTasks();
 
     vm.addTask = function() {
         var taskToSend = {
@@ -45,31 +40,13 @@ myApp.controller('AddItemController', function (ItemsService) {
         }
         console.log('in add controller addTask function', taskToSend);
         ItemsService.addTaskToDB(taskToSend);
-        vm.title = '';
-        vm.details = '';
-        vm.priority = '';
-        vm.due = '';
-        vm.pomos = ''
+        vm.clearAllInputs();
     }
 
-    vm.getNotes = function() {
-        console.log('in add controller getNotes function');
-        ItemsService.getNotesFromDB;
-    };
+    vm.addNote = function (noteToSend) {
 
-    vm.getNotes();
-
-    vm.addNote = function () {
-
-        var noteToSend = {
-            title: vm.title,
-            details: vm.details,
-            date: new Date(vm.date),
-        }
-        console.log('in add controller addNote function');
+        console.log('in add controller addNote function', noteToSend);
         ItemsService.addNoteToDB(noteToSend);
-        vm.title='',
-        vm.details='',
-        vm.date='';
+        vm.clearAllInputs();
     };
 });

@@ -1,2 +1,58 @@
-<div>Today View
+<div>
+    <h1>Tasks Due Today:</h1>
+    <table class="table table-active">
+        <thead>
+            <tr>
+                <th>Priority</th>
+                <th>Title</th>
+                <th>Details</th>
+                <th>Pomodoros</th>
+            </tr>
+        </thead>
+
+            <tr ng-repeat="task in TC.tasks.tasks">
+                <td>{{task.priority}}</td>
+                <td>{{task.title}}</td>
+                <td>{{task.details}}</td>
+                <td>{{task.pomos}}</td>
+            </tr>
+
+    </table>
+</div>
+<div>
+    <h1>Today's Events:</h1>
+    <table class="table table-active">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Details</th>
+                <th>Time</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+
+            <tr ng-repeat="event in TC.events.events">
+                <td>{{event.title}}</td>
+                <td>{{event.details}}</td>
+                <td>{{event.time}}</td>
+                <td>{{event.location}}</td>
+            </tr>
+
+    </table>
+</div>
+<h1>Notes:</h1>
+<table class="table table-active">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+
+        <tr ng-repeat="note in TC.notes.notes">
+            <td>{{note.title}}</td>
+            <td>{{note.details}}</td>
+        </tr>
+
+</table>
 </div>

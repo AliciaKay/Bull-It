@@ -8,6 +8,9 @@ var index = require('./routes/index');
 var addEvent = require('./routes/addEvent');
 var addTask = require('./routes/addTask');
 var addNote = require('./routes/addNote');
+var getTodaysEvents = require('./routes/getTodaysEvents');
+var getTodaysTasks = require('./routes/getTodaysTasks');
+var getTodaysNotes = require('./routes/getTodaysNotes');
 
 app.listen(port, function(){
     console.log('Listening on port:', port);
@@ -22,3 +25,6 @@ app.use('/', index);
 app.use('/addEvent', addEvent);
 app.use('/addTask', addTask);
 app.use('/addNote', addNote);
+app.use('/getTodaysEvents', getTodaysEvents);
+app.use('/getTodaysTasks', getTodaysTasks);
+app.use('/getTodaysNotes', getTodaysNotes);
