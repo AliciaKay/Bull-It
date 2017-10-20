@@ -2,12 +2,12 @@ myApp.controller('AddItemController', function (ItemsService) {
     console.log('in addcontroller');
 
     var vm = this;
-    vm.todaysDate = new Date();
+    vm.todaysDate = ItemsService.getToday;
 
     vm.clearAllInputs = function () {
         console.log('clearing all the inputs');
-        vm.title = '';
-        vm.details = '';
+        vm.note.title = '';
+        vm.note.details = '';
         vm.eventDate = '';
         vm.eventTime = '';
         vm.eventLocation = '';
@@ -15,12 +15,13 @@ myApp.controller('AddItemController', function (ItemsService) {
         vm.due = '';
         vm.pomos = '';
         vm.note.date='';
+        vm.item = ''
     }
 
     vm.addEvent = function () {
         var eventToSend = {
-            title: vm.title,
-            details: vm.details,
+            title: vm.note.title,
+            details: vm.note.details,
             date: new Date(vm.eventDate),
             time: vm.eventTime.toLocaleTimeString(),
             location: vm.eventLocation
@@ -32,8 +33,8 @@ myApp.controller('AddItemController', function (ItemsService) {
 
     vm.addTask = function() {
         var taskToSend = {
-            title: vm.title,
-            details: vm.details,
+            title: vm.note.title,
+            details: vm.note.details,
             priority: parseInt(vm.priority),
             due: new Date(vm.due),
             pomos: vm.pomos
