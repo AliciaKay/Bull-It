@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ui.bootstrap.modal', 'ngRoute']);
 
 console.log('reached client.js');
 

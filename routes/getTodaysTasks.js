@@ -21,4 +21,26 @@ router.get('/', function (req, res) {
     }
   })
 });
+
+router.delete('/:id', function(req,res){
+  var dbId= req.params.id;
+  console.log('in the delete route', dbId)
+
+  pool.connect(function (conErr, client, done){
+      if (conErr){
+          console.log(conErr);
+          res.sendStatus(500);
+      } else {
+          client.query('DELETE FROM tasks WHERE id = $1;', [dbId], function(queryErr, result){
+              done();
+              if(queryErr){
+                  res.sendStatus(500);
+              } else {
+                  res.sendStatus(202);
+              }
+          }) ;
+      }
+  })
+}); 
+
 module.exports = router;

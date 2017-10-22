@@ -20,14 +20,8 @@ myApp.service('ItemsService', function ($http) {
       data: eventListObject
     }).then(function() {
       // self.getEventsFromDB();
-    })
-  }
-
-  // self.getEventsFromDB = function () {
-  //   $http.get('/addEvent').then(function (response) {
-  //     self.eventListObject = response.data;
-  //   });
-  // }
+    });
+  };
 
   self.addTaskToDB = function (taskListObject) {
     $http({
@@ -36,14 +30,8 @@ myApp.service('ItemsService', function ($http) {
       data: taskListObject
     }).then(function() {
       // self.getTasksFromDB();
-    })
-  }
-
-  // self.getTasksFromDB = function () {
-  //   $http.get('/addTask').then(function (response) {
-  //     self.taskListObject = response.data;
-  //   });
-  // }
+    });
+  };
 
   self.addNoteToDB = function (noteListObject) {
     $http({
@@ -52,34 +40,58 @@ myApp.service('ItemsService', function ($http) {
       data: noteListObject
     }).then(function() {
       // self.getNotesFromDB();
-    })
-  }
+    });
+  };
 
-  // self.getNotesFromDB = function () {
-  //   $http.get('/addNote').then(function (response) {
-  //     self.noteListObject = response.data;
-  //   });
-  // }
+  self.removeTask = function (taskId) {
+    console.log('task id:', taskId);
+    $http({
+        method: 'DELETE',
+        url: '/getTodaysTasks/' + taskId,
+    }).then(function (res) {
+        self.getTodaysTasksFromDB();
+    });
+};
+
+self.removeNote = function (noteId) {
+  console.log('note id:', noteId);
+  $http({
+      method: 'DELETE',
+      url: '/getTodaysNotes/' + noteId,
+  }).then(function (res) {
+      self.getTodaysNotesFromDB();
+  });
+};
+
+self.removeEvent = function (eventId) {
+  console.log('event id:', eventId);
+  $http({
+      method: 'DELETE',
+      url: '/getTodaysEvents/' + eventId,
+  }).then(function (res) {
+      self.getTodaysEventsFromDB();
+  });
+};
 
   self.getTodaysEventsFromDB = function () {
     $http.get('/getTodaysEvents').then(function (response) {
       console.log('in getTodaysEventsFromDB in the service', response.data)
       self.eventsToday.events = response.data;
     });
-  }
+  };
 
   self.getTodaysTasksFromDB = function () {
     $http.get('/getTodaysTasks').then(function (response) {
       console.log('in getTodaysTasksFromDB in the service', response.data)
       self.tasksToday.tasks = response.data;
     });
-  }
+  };
 
   self.getTodaysNotesFromDB = function () {
     $http.get('/getTodaysNotes').then(function (response) {
       console.log('in getTodaysNotesFromDB in the service', response.data)
       self.notesToday.notes = response.data;
     });
-  }
+  };
 
 });

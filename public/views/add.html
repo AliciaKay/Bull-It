@@ -1,8 +1,8 @@
 <div>
     <h1>Enter Item Info</h1>
     <div class="form-group">
-        <input ng-model="AC.note.title" name="title" placeholder="Item Name">
-        <textarea class="form-control" rows="5" id="details" ng-model="AC.note.details" placeholder="Item Details"></textarea>
+        <input ng-model="AC.title" name="title" placeholder="Item Name">
+        <textarea class="form-control" rows="5" id="details" ng-model="AC.details" placeholder="Item Details"></textarea>
         <div class="radio">
             <label>
                 <input type="radio" name="item" value="task" ng-model="item">Task</label>
@@ -17,14 +17,14 @@
         <form>
             <h5>Add Note to Today?</h5>
             <label>
-                <input type="radio" name="assignNoteDate" ng-value="{{AC.todaysDate}}" ng-model="AC.note.date">Yes, add to {{AC.todaysDate | date:'MM-dd-yyyy'}}</label>
+                <input type="radio" name="assignNoteDate" ng-value="AC.todaysDate" ng-model="AC.date">Yes, add to {{AC.todaysDate | date:'MM-dd-yyyy'}}</label>
             <br>
             <label>
                 <input type="radio" name="assignNoteDate" value="no" ng-model="note">No, choose another date:</label>
             <br>
-            <input ng-show="note === 'no'" type="date" ng-model="AC.note.date">
+            <input ng-show="note === 'no'" type="date" ng-model="AC.date">
         </form>
-        <button ng-click="AC.addNote(AC.note)" type="button" name="button">Add Note</button>
+        <button ng-click="AC.addNote()" type="button" name="button">Add Note</button>
     </div>
 
     <div class="container" ng-show="item === 'event'">

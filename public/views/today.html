@@ -1,4 +1,18 @@
 <div>
+
+            <div modal="editModal" close="TC.cancel()">
+              <div class="modal-header">
+                  <h4>Edit Task:</h4>
+              </div>
+              <div class="modal-body">
+                  <p>Task Details Go Here</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-success" ng-click="TC.ok()">Okay</button>
+                <button class="btn" ng-click="TC.cancel()">Cancel</button>
+              </div>
+            </div>
+        
     <h4>Today is {{TC.todaysDate | date:'MM-dd-yyyy'}}</h4>
     <h3>Tasks Due Today:</h3>
     <div class="container">
@@ -18,9 +32,9 @@
                 <td>{{task.title}}</td>
                 <td>{{task.details}}</td>
                 <td><span ng-repeat="glyph in TC.getPomoNumber(task.pomos)"><span class="glyphicon glyphicon-time"></span></span></td>
-                <td><button>Cancel It</button>
-                <button>Edit It</button>
-                <button>Do It</button>
+                <td><button class="btn" ng-click="TC.cancelTask(task.id)"><span class="glyphicon glyphicon-trash"></span></button>
+                <button class="btn" ng-click="TC.editTask(task.id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button class="btn"><span class="glyphicon glyphicon-check"></span></button>
             </td>
             </tr>
 
@@ -37,6 +51,7 @@
                     <th>Details</th>
                     <th>Time</th>
                     <th>Location</th>
+                    <th>Options</th>
                 </tr>
             </thead>
 
@@ -45,6 +60,9 @@
                 <td>{{event.details}}</td>
                 <td>{{event.time}}</td>
                 <td>{{event.location}}</td>
+                <td><button ng-click="TC.cancelEvent(event.id)"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button ng-click="TC.editEvent(event.id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button>Do It</button></td>
             </tr>
 
         </table>
@@ -57,12 +75,16 @@
             <tr>
                 <th>Title</th>
                 <th>Details</th>
+                <th>Options</th>
             </tr>
         </thead>
 
         <tr ng-repeat="note in TC.notes.notes">
             <td>{{note.title}}</td>
             <td>{{note.details}}</td>
+            <td><button ng-click="TC.cancelNote(note.id)"><span class="glyphicon glyphicon-trash"></span></button>
+                <button ng-click="TC.editNote(note.id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button>Do It</button></td>
         </tr>
 
     </table>
