@@ -1,7 +1,23 @@
-myApp.controller('TodayController', function (ItemsService) {
+myApp.controller('TodayController', function (ItemsService, $uibModal) {
     console.log('in today controller');
-
     var vm = this;
+
+    vm.openModal = function () {
+        $uibModal.open({
+          templateUrl: 'views/editModal.html',
+          controller: function ($uibModalInstance) {
+            vm.ok = function () {
+              $uibModalInstance.close();
+            };
+          
+            vm.cancel = function () {
+              $uibModalInstance.dismiss('cancel');
+            };
+          }
+        })
+      };
+
+
     vm.getPomoNumber = function(num) {
         var array = [];
         for (var i = null; i < num; i++) {
@@ -9,20 +25,7 @@ myApp.controller('TodayController', function (ItemsService) {
         }
         return array;
     };
-
-    vm.open = function() {
-        vm.showModal = true;
-      };
     
-      vm.ok = function() {
-        vm.showModal = false;
-      };
-    
-      vm.cancel = function() {
-        vm.showModal = false;
-      };
-    
-
     vm.todaysDate = ItemsService.getToday;
     vm.events = ItemsService.eventsToday;
     vm.tasks = ItemsService.tasksToday;
