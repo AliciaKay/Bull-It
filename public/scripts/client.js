@@ -1,9 +1,8 @@
-var myApp = angular.module('myApp', ['ui.bootstrap.modal', 'ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
 
 console.log('reached client.js');
 
-myApp.config(function($routeProvider, 
-) {
+myApp.config(function($routeProvider) {
     $routeProvider.when('/today', {
         templateUrl: 'views/today.html',
         controller: 'TodayController as TC'

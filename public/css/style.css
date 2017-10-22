@@ -1,0 +1,67 @@
+h1, p {
+    font-family: 'Satisfy', cursive;
+}
+
+h4, h3{
+    font-family: 'Permanent Marker', cursive;
+}
+
+.btn {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.priority {
+    font-family: 'Architects Daughter', cursive; 
+}
+
+h4 {
+    text-align: center
+}
+
+h5 {
+    font-family: 'Architects Daughter', cursive; 
+}
+
+th {
+    font-family: 'Architects Daughter', cursive;
+    background-color: whitesmoke;
+}
+
+td {
+    font-family: 'Homemade Apple', cursive;
+}
+
+a {
+font-family: 'Fredericka the Great', cursive;
+}
+
+body {
+    background-image: url("../assets/paper.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center
+}
+
+input[type="text"] {
+    font-family: 'Satisfy', cursive;
+}
+
+input[type="radio"] {
+    font-family: 'Architects Daughter', cursive; 
+}
+
+input[type="date"] {
+    font-family: 'Architects Daughter', cursive; 
+}
+
+input[type="time"] {
+    font-family: 'Architects Daughter', cursive; 
+}
+
+label {
+    font-family: 'Architects Daughter', cursive; 
+}
+
+textarea {
+    font-family: 'Architects Daughter', cursive; 
+}
