@@ -1,60 +1,140 @@
-myApp.controller('TodayController', function (ItemsService, $uibModal) {
+myApp.controller('TodayController', function (ItemsService, $location) {
     console.log('in today controller');
     var vm = this;
 
-    vm.openModal = function () {
-        $uibModal.open({
-          templateUrl: 'views/editModal.html',
-          controller: function ($uibModalInstance) {
-            vm.ok = function () {
-              $uibModalInstance.close();
-            };
-          
-            vm.cancel = function () {
-              $uibModalInstance.dismiss('cancel');
-            };
-          }
-        })
-      };
-
-
-    vm.getPomoNumber = function(num) {
+    vm.getPomoNumber = function (num) {
         var array = [];
         for (var i = null; i < num; i++) {
             array.push(i);
         }
         return array;
     };
-    
+
     vm.todaysDate = ItemsService.getToday;
     vm.events = ItemsService.eventsToday;
     vm.tasks = ItemsService.tasksToday;
     vm.notes = ItemsService.notesToday;
 
-        ItemsService.getTodaysEventsFromDB();
-        ItemsService.getTodaysTasksFromDB();
-        ItemsService.getTodaysNotesFromDB();
+    ItemsService.getTodaysEventsFromDB();
 
-    vm.cancelTask = function(id) {
-        ItemsService.removeTask(id);
-    };
-    vm.cancelNote = function(id) {
-        ItemsService.removeNote(id);
-    };
-    vm.cancelEvent = function(id) {
-        ItemsService.removeEvent(id);
+    ItemsService.getTodaysTasksFromDB();
+
+    ItemsService.getTodaysNotesFromDB();
+
+    vm.cancelTask = function (id) {
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false
+        }).then(function () {
+            swal(
+                'Deleted!',
+                'Your task has been deleted.',
+                'success',
+                ItemsService.removeTask(id)
+            )
+        }, function (dismiss) {
+            // dismiss can be 'cancel', 'overlay',
+            // 'close', and 'timer'
+            if (dismiss === 'cancel') {
+                swal(
+                    'Cancelled',
+                    'Your task is safe :)',
+                    'error'
+                )
+            }
+        })
     };
 
-    vm.editTask = function(id) {
-        vm.open();
+    vm.cancelNote = function (id) {
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false
+        }).then(function () {
+            swal(
+                'Deleted!',
+                'Your note has been deleted.',
+                'success',
+                ItemsService.removeNote(id)
+            )
+        }, function (dismiss) {
+            // dismiss can be 'cancel', 'overlay',
+            // 'close', and 'timer'
+            if (dismiss === 'cancel') {
+                swal(
+                    'Cancelled',
+                    'Your note is safe :)',
+                    'error'
+                )
+            }
+        })
+    };
+
+    vm.cancelEvent = function (id) {
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false
+        }).then(function () {
+            swal(
+                'Deleted!',
+                'Your event has been deleted.',
+                'success',
+                ItemsService.removeEvent(id)
+            )
+        }, function (dismiss) {
+            // dismiss can be 'cancel', 'overlay',
+            // 'close', and 'timer'
+            if (dismiss === 'cancel') {
+                swal(
+                    'Cancelled',
+                    'Your event is safe :)',
+                    'error'
+                )
+            }
+        })
+    };
+
+
+    vm.goToEditTask = function (id) {
         console.log('edit task', id);
-        // ItemsService.editTask(id);
+        $location.path('/edit');
     };
-    vm.editNote = function(id) {
-        ItemsService.editNote(id);
+
+    vm.goToEditEvent = function (id) {
+        console.log('edit event', id);
+        $location.path('/edit');
     };
-    vm.editEvent = function(id) {
-        ItemsService.editEvent(id);
+
+    vm.goToEditNote = function (id) {
+        console.log('edit note', id);
+        $location.path('/edit');
     };
+
 
 });

@@ -42,5 +42,26 @@ router.delete('/:id', function(req,res){
       }
   })
 }); 
-
+router.put('/:id', function (req, res) {
+  console.log('in the task put', req.body);
+  var newTask = req.body;
+  var taskId = req.params.id;
+  pool.connect(function (conErr, client, done){
+      if (conErr){
+          console.log(conErr);
+          res.sendStatus(500);
+      } else {
+          console.log('no connection error');
+          var queryString = 'UPDATE tasks SET title = $1, details = $2, priority = $3, due = $4 pomos = $5 WHERE id = $6;';
+          client.query(queryString, [newTask.title, newTask.details, newTask.priority, newTask.due, newTask.pomos, taskId], function(queryErr, resultObj) {
+              done();
+              if (queryErr) {
+                  res.sendStatus(500)
+               } else {
+                  res.sendStatus(201)
+               }
+          });
+      }
+  })
+});
 module.exports = router;

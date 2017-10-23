@@ -1,8 +1,5 @@
-<h1>$uibModal example</h1>
-<button class="btn btn-primary" type="button" ng-click="TC.openModal()">Open modal</button>
-
 <div class="container">
-    <h4>Today is {{TC.todaysDate | date:'MM-dd-yyyy'}}</h4>
+    <h4>Today is {{TC.todaysDate | date:'EEEE, MMMM d, yyyy'}}</h4>
     <h3>Tasks Due Today:</h3>
     <div class="container">
         <table class="table table-active table-responsive">
@@ -31,7 +28,7 @@
                     <button class="btn btn-danger btn-xs" ng-click="TC.cancelTask(task.id)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
-                    <button class="btn btn-warning btn-xs" ng-click="TC.editTask(task.id)">
+                    <button class="btn btn-warning btn-xs" ng-click="TC.goToEditTask(task.id)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                     <button class="btn btn-success btn-xs">
@@ -61,17 +58,14 @@
             <tr ng-repeat="event in TC.events.events">
                 <td>{{event.title}}</td>
                 <td>{{event.details}}</td>
-                <td>{{event.time}}</td>
+                <td>{{event.time | date:'hh:mm a'}}</td>
                 <td>{{event.location}}</td>
                 <td>
                     <button class="btn btn-danger btn-xs" ng-click="TC.cancelEvent(event.id)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
-                    <button class="btn btn-warning btn-xs" ng-click="TC.editEvent(event.id)">
+                    <button class="btn btn-warning btn-xs" ng-click="TC.goToEditEvent(event.id)">
                         <span class="glyphicon glyphicon-pencil"></span>
-                    </button>
-                    <button class="btn btn-success btn-xs">
-                        <span class="glyphicon glyphicon-check"></span>
                     </button>
                 </td>
             </tr>
@@ -98,11 +92,8 @@
                     <button class="btn btn-danger btn-xs" ng-click="TC.cancelNote(note.id)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
-                    <button class="btn btn-warning btn-xs" ng-click="TC.editNote(note.id)">
+                    <button class="btn btn-warning btn-xs" ng-click="TC.goToEditNote(note.id)">
                         <span class="glyphicon glyphicon-pencil"></span>
-                    </button>
-                    <button class="btn btn-success btn-xs">
-                        <span class="glyphicon glyphicon-check"></span>
                     </button>
                 </td>
             </tr>

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
+var myApp = angular.module('myApp', ['ngRoute']);
 
 console.log('reached client.js');
 
@@ -12,6 +12,9 @@ myApp.config(function($routeProvider) {
     }).when('/add', {
         templateUrl: 'views/add.html',
         controller: 'AddItemController as AC'
+    }).when('/edit', {
+        templateUrl: 'views/edit.html',
+        controller: 'EditItemController as EC'
     }).otherwise('/');
     // $locationProvider.html5Mode(true);
   });

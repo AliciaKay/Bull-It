@@ -14,7 +14,7 @@ myApp.controller('AddItemController', function (ItemsService) {
         vm.priority = '';
         vm.due = '';
         vm.pomos = '';
-        vm.date='';
+        vm.date = '';
         vm.item = ''
     };
 
@@ -27,11 +27,19 @@ myApp.controller('AddItemController', function (ItemsService) {
             location: vm.eventLocation
         };
         console.log('in add controller addEvent function', eventToSend);
-        ItemsService.addEventToDB(eventToSend);
-        vm.clearAllInputs();
+        swal({
+            title: 'Added to Your Events',
+            width: 600,
+            padding: 100,
+            background: '#fff url(assets/page.JPG)'
+        }).then(function () {
+            ItemsService.addEventToDB(eventToSend);
+            vm.clearAllInputs();
+        });
     };
 
-    vm.addTask = function() {
+
+    vm.addTask = function () {
         var taskToSend = {
             title: vm.title,
             details: vm.details,
@@ -40,18 +48,32 @@ myApp.controller('AddItemController', function (ItemsService) {
             pomos: vm.pomos
         };
         console.log('in add controller addTask function', taskToSend);
-        ItemsService.addTaskToDB(taskToSend);
-        vm.clearAllInputs();
+        swal({
+            title: 'Added to Your Tasks',
+            width: 600,
+            padding: 100,
+            background: '#fff url(assets/page.JPG)'
+        }).then(function () {
+            ItemsService.addTaskToDB(taskToSend);
+            vm.clearAllInputs();
+        });
     };
 
-    vm.addNote = function() {
+    vm.addNote = function () {
         var noteToSend = {
             title: vm.title,
             details: vm.details,
             date: new Date(vm.date)
         };
         console.log('in add controller addNote function', noteToSend);
-        ItemsService.addNoteToDB(noteToSend)
-        vm.clearAllInputs();
+        swal({
+            title: 'Added to Your Notes',
+            width: 600,
+            padding: 100,
+            background: '#fff url(assets/page.JPG)'
+        }).then(function () {
+            ItemsService.addNoteToDB(noteToSend)
+            vm.clearAllInputs();
+        });
     };
 });

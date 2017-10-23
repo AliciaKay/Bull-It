@@ -25,10 +25,12 @@ h5 {
 th {
     font-family: 'Architects Daughter', cursive;
     background-color: whitesmoke;
+    text-align: center
 }
 
 td {
     font-family: 'Homemade Apple', cursive;
+    text-align: center
 }
 
 a {
@@ -36,10 +38,10 @@ font-family: 'Fredericka the Great', cursive;
 }
 
 body {
-    background-image: url("../assets/paper.jpg");
+    background-image: url("../assets/paper.png");
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center
+    background-repeat: repeat;
+    background-position: top-right;
 }
 
 input[type="text"] {

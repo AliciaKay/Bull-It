@@ -45,4 +45,26 @@ router.delete('/:id', function(req,res){
   })
 }); 
 
+router.put('/:id', function (req, res) {
+  console.log('in the events put', req.body);
+  var newEvent = req.body;
+  var eventId = req.params.id;
+  pool.connect(function (conErr, client, done){
+      if (conErr){
+          console.log(conErr);
+          res.sendStatus(500);
+      } else {
+          console.log('no connection error');
+          var queryString = 'UPDATE events SET title = $1, details = $2, date = $3, time = $4 location = $5 WHERE id = $6;';
+          client.query(queryString, [newEvent.title, newEvent.details, newEvent.date, newEvent.time, newEvent.location, eventId], function(queryErr, resultObj) {
+              done();
+              if (queryErr) {
+                  res.sendStatus(500)
+               } else {
+                  res.sendStatus(201)
+               }
+          });
+      }
+  })
+});
 module.exports = router;

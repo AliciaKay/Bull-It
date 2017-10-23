@@ -1,34 +1,34 @@
 myApp.service('ItemsService', function ($http) {
-    console.log('in itemsService');
+  console.log('in itemsService');
 
-    var self = this;
-    self.getToday = new Date();
-    // // not static!!!! 
-    // // dynamic data MUST BE IN AN OBJECT
+  var self = this;
+  self.getToday = new Date();
+  // // not static!!!! 
+  // // dynamic data MUST BE IN AN OBJECT
 
-    self.eventListObj = {event: []};
-    self.taskListObj = {task: []};
-    self.noteListObj = {note: []};
-    self.eventsToday = {events: []};
-    self.tasksToday = {tasks: []};
-    self.notesToday = {notes: []};
+  self.eventListObj = { event: [] };
+  self.taskListObj = { task: [] };
+  self.noteListObj = { note: [] };
+  self.eventsToday = { events: [] };
+  self.tasksToday = { tasks: [] };
+  self.notesToday = { notes: [] };
 
   self.addEventToDB = function (eventListObject) {
     $http({
       method: 'POST',
       url: '/addEvent',
       data: eventListObject
-    }).then(function() {
-      // self.getEventsFromDB();
-    });
-  };
+    }).then(function () {
+      console.log('added to events');
+      });
+    };
 
   self.addTaskToDB = function (taskListObject) {
     $http({
       method: 'POST',
       url: '/addTask',
       data: taskListObject
-    }).then(function() {
+    }).then(function () {
       // self.getTasksFromDB();
     });
   };
@@ -38,7 +38,7 @@ myApp.service('ItemsService', function ($http) {
       method: 'POST',
       url: '/addNote',
       data: noteListObject
-    }).then(function() {
+    }).then(function () {
       // self.getNotesFromDB();
     });
   };
@@ -46,32 +46,32 @@ myApp.service('ItemsService', function ($http) {
   self.removeTask = function (taskId) {
     console.log('task id:', taskId);
     $http({
-        method: 'DELETE',
-        url: '/getTodaysTasks/' + taskId,
+      method: 'DELETE',
+      url: '/getTodaysTasks/' + taskId,
     }).then(function (res) {
-        self.getTodaysTasksFromDB();
+      self.getTodaysTasksFromDB();
     });
-};
+  };
 
-self.removeNote = function (noteId) {
-  console.log('note id:', noteId);
-  $http({
+  self.removeNote = function (noteId) {
+    console.log('note id:', noteId);
+    $http({
       method: 'DELETE',
       url: '/getTodaysNotes/' + noteId,
-  }).then(function (res) {
+    }).then(function (res) {
       self.getTodaysNotesFromDB();
-  });
-};
+    });
+  };
 
-self.removeEvent = function (eventId) {
-  console.log('event id:', eventId);
-  $http({
+  self.removeEvent = function (eventId) {
+    console.log('event id:', eventId);
+    $http({
       method: 'DELETE',
       url: '/getTodaysEvents/' + eventId,
-  }).then(function (res) {
+    }).then(function (res) {
       self.getTodaysEventsFromDB();
-  });
-};
+    });
+  };
 
   self.getTodaysEventsFromDB = function () {
     $http.get('/getTodaysEvents').then(function (response) {
@@ -94,4 +94,37 @@ self.removeEvent = function (eventId) {
     });
   };
 
+  self.editEvent = function (event) {
+    var id = event.id;
+    $http({
+      method: 'PUT',
+      url: '/getTodaysEvents/' + id,
+      data: {
+        title: event.title,
+        details: event.details,
+        date: event.date,
+        time: event.time,
+        location: event.location
+      }
+    }).then(function (res) {
+      vm.getTodaysEventsFromDB();
+    })
+  }
+
+  self.editTask = function (task) {
+    var id = task.id;
+    $http({
+      method: 'PUT',
+      url: '/getTodaysTasks/' + id,
+      data: {
+        title: task.title,
+        details: task.details,
+        priority: task.priority,
+        due: task.due,
+        pomos: task.pomos
+      }
+    }).then(function (res) {
+      vm.getTodaysTasksFromDB();
+    })
+  }
 });
