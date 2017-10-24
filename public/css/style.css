@@ -46,6 +46,7 @@ body {
 
 input[type="text"] {
     font-family: 'Satisfy', cursive;
+    width: 50% !important;
 }
 
 input[type="radio"] {
@@ -66,4 +67,5 @@ label {
 
 textarea {
     font-family: 'Architects Daughter', cursive; 
+    width: 50% !important;
 }

@@ -12,6 +12,8 @@ myApp.service('ItemsService', function ($http) {
   self.eventsToday = { events: [] };
   self.tasksToday = { tasks: [] };
   self.notesToday = { notes: [] };
+  self.eventToEdit = {id:''};
+  self.taskToEdit = {id:''};
 
   self.addEventToDB = function (eventListObject) {
     $http({
@@ -94,37 +96,33 @@ myApp.service('ItemsService', function ($http) {
     });
   };
 
-  self.editEvent = function (event) {
-    var id = event.id;
+  self.editEvent = function (id, event) {
     $http({
       method: 'PUT',
       url: '/getTodaysEvents/' + id,
-      data: {
-        title: event.title,
-        details: event.details,
-        date: event.date,
-        time: event.time,
-        location: event.location
-      }
+      data: event
     }).then(function (res) {
-      vm.getTodaysEventsFromDB();
+      self.getTodaysEventsFromDB();
     })
   }
 
-  self.editTask = function (task) {
-    var id = task.id;
+  self.editTask = function (id, task) {
     $http({
       method: 'PUT',
       url: '/getTodaysTasks/' + id,
-      data: {
-        title: task.title,
-        details: task.details,
-        priority: task.priority,
-        due: task.due,
-        pomos: task.pomos
-      }
+      data: task
     }).then(function (res) {
-      vm.getTodaysTasksFromDB();
+      self.getTodaysTasksFromDB();
+    })
+  }
+
+  self.editNote = function (id, note) {
+    $http({
+      method: 'PUT',
+      url: '/getTodaysNotes/' + id,
+      data: note
+    }).then(function (res) {
+      self.getTodaysNotesFromDB();
     })
   }
 });

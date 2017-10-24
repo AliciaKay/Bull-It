@@ -122,11 +122,13 @@ myApp.controller('TodayController', function (ItemsService, $location) {
 
 
     vm.goToEditTask = function (id) {
+        ItemsService.taskToEdit.id = id;
         console.log('edit task', id);
         $location.path('/edit');
     };
 
     vm.goToEditEvent = function (id) {
+        ItemsService.eventToEdit.id = id;
         console.log('edit event', id);
         $location.path('/edit');
     };

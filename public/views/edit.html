@@ -1,64 +1,54 @@
-<div>
-    <div>
-        <h1>Enter Item Update</h1>
-        <div class="form-group">
-            <input class="form-control" type="text" ng-model="EC.title" name="title" placeholder="Item Name">
-            <textarea class="form-control" rows="5" id="details" ng-model="EC.details" placeholder="Item Details"></textarea>
-
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="item" value="task" ng-model="item">Task</label>
-            <label>
-                <input type="radio" name="item" value="event" ng-model="item">Event</label>
-            <label>
-                <input type="radio" name="item" value="note" ng-model="item">Note</label>
-        </div>
+<div class="container">
+    <h1>Enter Event Changes</h1>
+    <div class="form-group">
+        <input class="form-control" type="text" ng-value="EC.eventItem.title" ng-model="EC.title" name="title">
+        <textarea class="form-control" rows="5" id="details" ng-value="EC.eventItem.details" ng-model="EC.details"></textarea>
+        <form>
+            <h5>When is this event?</h5>
+            <input type="date" ng-value="EC.eventItem.date" ng-model="EC.event.eventDate">
+            <input type="time" ng-value="EC.eventItem.time" ng-model="EC.event.eventTime">
+            <input type="text" ng-value="EC.eventItem.location" ng-model="EC.location">
+        </form>
+        <button ng-click="EC.submitEventEdit()" type="button" name="button" class="btn btn-success">Submit Event Edit</button>
     </div>
+</div>
 
-    <div class="container" ng-show="item === 'note'">
+<div class="container">
+    <h1>Enter Task Changes</h1>
+    <div class="form-group">
+        <input class="form-control" type="text" ng-value="EC.taskItem.title" ng-model="EC.title" name="title">
+        <textarea class="form-control" rows="5" id="details" ng-value="EC.taskItem.details" ng-model="EC.details"></textarea>
+        <form>
+            <h5>Select Priority:</h5>
+            <label>
+                <input type="number" name="priority" ng-value="EC.taskItem.priority" ng-model="EC.priority"> 1, 2, or 3</label>
+            <br>
+            <h5>Select Due Date</h5>
+            <input type="date" ng-value="EC.taskItem.due" ng-model="EC.due">
+            <br>
+            <h5>Approximately how long will this take to complete?</h5>
+            <label>
+                <input type="number" ng-value="EC.taskItem.pomos" ng-model="EC.pomos" min="1" max="10"> half-hours</label>
+        </form>
+        <button ng-click="EC.submitTaskEdit()" type="button" name="button" class="btn btn-success">Submit Task Edit</button>
+    </div>
+</div>
+<div class="container">
+    <h1>Enter Note Changes</h1>
+    <div class="form-group">
+        <input class="form-control" type="text" ng-value="EC.noteItem.title" ng-model="EC.title" name="title">
+        <textarea class="form-control" rows="5" id="details" ng-value="EC.noteItem.details" ng-model="EC.details"></textarea>
+
         <form>
             <h5>Add Note to Today?</h5>
             <label>
-                <input type="radio" name="assignNoteDate" ng-value="EC.todaysDate" ng-model="EC.date">Yes, add to {{AC.todaysDate | date:'MM-dd-yyyy'}}</label>
+                <input type="radio" name="assignNoteDate" ng-value="EC.todaysDate" ng-model="EC.task.date">Yes, add to {{EC.todaysDate | date:'MM-dd-yyyy'}}</label>
             <br>
             <label>
                 <input type="radio" name="assignNoteDate" value="no" ng-model="note">No, choose another date:</label>
             <br>
-            <input ng-show="note === 'no'" type="date" ng-model="EC.date">
+            <input ng-show="note === 'no'" type="date" ng-model="EC.task.date">
         </form>
-        <button ng-click="EC.addNote()" type="button" name="button">Add Note</button>
-    </div>
-
-    <div class="container" ng-show="item === 'event'">
-        <form>
-            <h5>When is this event?</h5>
-            <input type="date" ng-model="EC.eventDate">
-            <input type="time" ng-model="EC.eventTime">
-            <input type="text" ng-model="EC.eventLocation" placeholder="Enter the Address or Location">
-        </form>
-        <button ng-click="EC.addEvent()" type="button" name="button">Add Event</button>
-    </div>
-
-    <div class="container" ng-show="item === 'task'">
-        <form>
-            <h5>Select Urgency:</h5>
-            <label>
-                <input type="radio" name="priority" value="1" ng-model="EC.priority">High</label>
-            <br>
-            <label>
-                <input type="radio" name="priority" value="2" ng-model="EC.priority">Medium</label>
-            <br>
-            <label>
-                <input type="radio" name="priority" value="3" ng-model="EC.priority">Low</label>
-            <br>
-            <h5>Select Due Date</h5>
-            <input type="date" ng-model="EC.due">
-            <br>
-            <h5>Approximately how long will this take to complete?</h5>
-            <label>
-                <input type="number" ng-model="EC.pomos" min="1" max="10"> half-hours</label>
-        </form>
-        <button ng-click="EC.addTask()" type="button" name="button">Add Task</button>
+        <button ng-click="EC.submitNoteEdit()" type="button" name="button" class="btn btn-success">Submit Note Edit</button>
     </div>
 </div>
