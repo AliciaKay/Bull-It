@@ -127,4 +127,8 @@ myApp.service('ItemsService', function ($http) {
       self.getTodaysNotesFromDB();
     })
   }
+
+  self.taskToDo = function (id, pomos) {
+    console.log('got to taskToDo in the service, with id: ', id, 'pomos: ', pomos);
+  }
 });

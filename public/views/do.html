@@ -1,0 +1,22 @@
+<div id="pomodoro-app" ng-app="pomodoroApp">
+        <div id="container">
+           <pomodoro-comp minutes="25"></pomodoro-comp>
+        </div>
+        <script type="text/ng-template" id="/componentGrid.html">
+           <div id="timer">
+            <div id="time">
+              <span>{{$ctrl.toDoubleDigit($ctrl.minutes)}}</span>
+              <span>:</span>
+              <span>{{$ctrl.toDoubleDigit($ctrl.seconds)}}</span>
+            </div>
+            <div id="filler" ng-style="{height : $ctrl.fillerHeight + 'px'}"></div>
+          </div>
+      
+          <div id="buttons">
+            <button id="work" ng-click="$ctrl.startWork()">Work</button>
+            <button id="shortBreak" ng-click="$ctrl.startShortBreak()">Short Break</button>
+            <button id="longBreak" ng-click="$ctrl.startLongBreak()">Long Break</button>
+            <button id="stop" ng-click="$ctrl.stopTimer()">Stop</button>
+          </div>
+        </script>
+      </div>

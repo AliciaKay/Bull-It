@@ -11,14 +11,13 @@ myApp.controller('TodayController', function (ItemsService, $location) {
     };
 
     vm.todaysDate = ItemsService.getToday;
+
     vm.events = ItemsService.eventsToday;
     vm.tasks = ItemsService.tasksToday;
     vm.notes = ItemsService.notesToday;
 
     ItemsService.getTodaysEventsFromDB();
-
     ItemsService.getTodaysTasksFromDB();
-
     ItemsService.getTodaysNotesFromDB();
 
     vm.cancelTask = function (id) {
@@ -138,6 +137,12 @@ myApp.controller('TodayController', function (ItemsService, $location) {
         console.log('edit note', id);
         $location.path('/edit');
     };
+
+    vm.goToDoTask = function(id, pomos) {
+        ItemsService.taskToDo.id = id;
+        ItemsService.taskToDo.pomos = pomos;
+        $location.path('/do');
+    }
 
 
 });
