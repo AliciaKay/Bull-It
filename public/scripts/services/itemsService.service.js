@@ -15,6 +15,7 @@ myApp.service('ItemsService', function ($http) {
   self.eventToEdit = {id: ''};
   self.taskToEdit = {id: ''};
   self.noteToEdit = {id: ''};
+  self.taskToDo = {id: ''};
 
   self.addEventToDB = function (eventListObject) {
     $http({
@@ -128,7 +129,8 @@ myApp.service('ItemsService', function ($http) {
     })
   }
 
-  self.taskToDo = function (id, pomos) {
-    console.log('got to taskToDo in the service, with id: ', id, 'pomos: ', pomos);
-  }
+    self.doTask = function(id, pomos) {
+      
+
+    }
 });
