@@ -134,6 +134,7 @@ myApp.controller('TodayController', function (ItemsService, $location) {
     };
 
     vm.goToEditNote = function (id) {
+        ItemsService.noteToEdit.id = id;
         console.log('edit note', id);
         $location.path('/edit');
     };

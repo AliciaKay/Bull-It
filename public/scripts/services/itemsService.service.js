@@ -12,8 +12,9 @@ myApp.service('ItemsService', function ($http) {
   self.eventsToday = { events: [] };
   self.tasksToday = { tasks: [] };
   self.notesToday = { notes: [] };
-  self.eventToEdit = {id:''};
-  self.taskToEdit = {id:''};
+  self.eventToEdit = {id: ''};
+  self.taskToEdit = {id: ''};
+  self.noteToEdit = {id: ''};
 
   self.addEventToDB = function (eventListObject) {
     $http({
@@ -122,6 +123,7 @@ myApp.service('ItemsService', function ($http) {
       url: '/getTodaysNotes/' + id,
       data: note
     }).then(function (res) {
+      console.log('got to the editNote put in the service...');
       self.getTodaysNotesFromDB();
     })
   }
