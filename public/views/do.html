@@ -1,22 +1,32 @@
-<div id="pomodoro-app" ng-app="pomodoroApp">
-        <div id="container">
-           <pomodoro-comp minutes="25"></pomodoro-comp>
-        </div>
-        <script type="text/ng-template" id="/componentGrid.html">
-           <div id="timer">
-            <div id="time">
-              <span>{{$ctrl.toDoubleDigit($ctrl.minutes)}}</span>
-              <span>:</span>
-              <span>{{$ctrl.toDoubleDigit($ctrl.seconds)}}</span>
-            </div>
-            <div id="filler" ng-style="{height : $ctrl.fillerHeight + 'px'}"></div>
-          </div>
-      
-          <div id="buttons">
-            <button id="work" ng-click="$ctrl.startWork()">Work</button>
-            <button id="shortBreak" ng-click="$ctrl.startShortBreak()">Short Break</button>
-            <button id="longBreak" ng-click="$ctrl.startLongBreak()">Long Break</button>
-            <button id="stop" ng-click="$ctrl.stopTimer()">Stop</button>
-          </div>
-        </script>
-      </div>
+
+<body>
+  <div class="container">
+    <h1>Pomodoro Clock</h1>
+    <div class="work-time changer">
+      <h4>Work Time</h4>
+      <button class="btn btn-danger btn-xs" ng-click="DC.changeTime('work', 1)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+
+      <h2 class="work-time-time">{{DC.workTime}}</h2>
+
+      <button class="btn btn-success btn-xs" ng-click="DC.changeTime('work', -1)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+
+    </div>
+
+    <div class="timer">
+      <button class="btn btn-primary btn-xs" ng-click="DC.toggleTimer()">Start/Stop</button>
+      <h2>{{DC.timerCountdown}}</h2>
+      <button class="btn btn-primary btn-xs" ng-click="DC.reset()">Reset</button>
+    </div>
+
+    <div class="rest-time changer">
+      <h4>Rest Time</h4>
+      <button class="btn btn-danger btn-xs" ng-click="DC.changeTime('break', 1)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+
+      <h2 class="rest-time-time">{{DC.restTime}}</h2>
+
+      <button class="btn btn-success btn-xs" ng-click="DC.changeTime('break', -1)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+
+    </div>
+   
+  </div>
+</body>

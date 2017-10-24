@@ -69,3 +69,55 @@ textarea {
     font-family: 'Architects Daughter', cursive; 
     width: 50% !important;
 }
+
+.work-time-time {
+    font-family: 'Architects Daughter', cursive;
+    text-align: center;
+    color:rgb(7, 34, 65);
+}
+
+.rest-time-time {
+    font-family: 'Architects Daughter', cursive;
+    text-align: center;
+    color:rgb(7, 34, 65);
+}
+
+  
+ .changer {
+    border: 5px solid rgb(117, 192, 197);
+    border-radius: 50%;
+    padding-top: 17px;
+    height: 200px;
+    width: 200px;
+    margin: 5px;
+    display: inline-block;
+    color:rgb(7, 34, 65);
+    text-align: center;
+  }
+  
+  .active-timer {
+    background-image:url("../assets/background.jpg");
+    color:rgb(7, 34, 65);
+    font-family: 'Architects Daughter', cursive
+  }
+  
+  .timer {
+    padding-top: 40px;
+    color:rgb(7, 34, 65); 
+    font-size:50px; 
+    margin:5px;
+    border : 5px solid rgb(117, 192, 197);
+    border-radius:50%;
+    width:300px;
+    height:300px;
+    overflow:hidden;
+    position:relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor:default;
+    font-family: 'Architects Daughter', cursive;
+    text-align: center;
+    display: inline-block;
+  }
