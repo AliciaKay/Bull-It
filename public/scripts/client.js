@@ -15,6 +15,9 @@ myApp.config(function($routeProvider) {
     }).when('/edit', {
         templateUrl: 'views/edit.html',
         controller: 'EditItemController as EC'
+    }).when('/do', {
+        templateUrl: 'views/do.html',
+        controller: 'DoModeController as DC'
     }).otherwise('/');
     // $locationProvider.html5Mode(true);
   });
