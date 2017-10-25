@@ -133,3 +133,7 @@ textarea {
   .left-align {
       text-align: left;
   }
+
+  .right-align {
+      float: right;
+  }

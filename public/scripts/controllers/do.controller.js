@@ -13,8 +13,43 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
     });
 
     vm.startingPomos = vm.taskItem.pomos;
-    vm.pomoSeries = vm.taskItem.pomos;
+    vm.pomoSeries = vm.taskItem.pomos - vm.taskItem.completedpomos;
     vm.completedpomos = vm.taskItem.completedpomos;
+
+    vm.completeTask = function(){
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, mark as complete!',
+            cancelButtonText: 'No, cancel!',
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false
+        }).then(function () {
+            swal(
+                'Complete!',
+                'Your task has been completed.',
+                'success',
+                vm.taskItem.completed = true,
+                vm.submitTaskEdit(),
+                $location.path('/today'),
+            )
+        }, function (dismiss) {
+            // dismiss can be 'cancel', 'overlay',
+            // 'close', and 'timer'
+            if (dismiss === 'cancel') {
+                swal(
+                    'Cancelled',
+                    'Your task is safe :)',
+                    'error'
+                )
+            }
+        })
+    };
 
     vm.workTime = 25;
     vm.restTime = 5;

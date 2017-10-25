@@ -146,10 +146,19 @@ myApp.controller('TodayController', function (ItemsService, $location) {
         $location.path('/edit');
     };
 
-    vm.goToDoTask = function(id, pomos) {
+    vm.goToDoTask = function (id, pomos) {
         ItemsService.taskToEdit.id = id;
         ItemsService.taskToEdit.pomos = pomos;
         $location.path('/do');
+    }
+
+    vm.cannotDoTask = function() {
+        swal({
+            title: 'Once a task is completed, it cannot be timed again.',
+            width: 600,
+            padding: 100,
+            background: '#fff url(assets/page.JPG)'
+        })
     }
 
 

@@ -1,4 +1,4 @@
-myApp.controller('AddItemController', function (ItemsService) {
+myApp.controller('AddItemController', function (ItemsService, $location) {
     console.log('in addcontroller');
 
     var vm = this;
@@ -35,6 +35,7 @@ myApp.controller('AddItemController', function (ItemsService) {
         }).then(function () {
             ItemsService.addEventToDB(eventToSend);
             vm.clearAllInputs();
+            $location.path('/today');
         });
     };
 
@@ -56,6 +57,7 @@ myApp.controller('AddItemController', function (ItemsService) {
         }).then(function () {
             ItemsService.addTaskToDB(taskToSend);
             vm.clearAllInputs();
+            $location.path('/today');
         });
     };
 
@@ -74,6 +76,7 @@ myApp.controller('AddItemController', function (ItemsService) {
         }).then(function () {
             ItemsService.addNoteToDB(noteToSend)
             vm.clearAllInputs();
+            $location.path('/today');
         });
     };
 });
