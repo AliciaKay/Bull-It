@@ -69,6 +69,8 @@ myApp.controller('EditItemController', function (ItemsService) {
         var priority = vm.priority;
         var due = vm.due;
         var pomos = vm.pomos;
+        var completedpomos = vm.completedpomos;
+        var completed = vm.completed;
         var task = {};
         if (title) {
             task.title = vm.title;
@@ -94,7 +96,17 @@ myApp.controller('EditItemController', function (ItemsService) {
             task.pomos = vm.pomos;
         } else {
             task.pomos = vm.taskItem.pomos;
-        }
+        };
+        if (completedpomos) {
+            task.completedpomos = vm.completedpomos;
+        } else {
+            task.completedpomos = vm.taskItem.completedpomos;
+        };
+        if (completed) {
+            task.completed = vm.completed;
+        } else {   
+            task.completed = vm.taskItem.completed;
+        };
         console.log("task:", task);
         ItemsService.editTask(vm.taskId, task);
     }

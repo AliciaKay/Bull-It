@@ -4,7 +4,9 @@ CREATE TABLE tasks (
 	details VARCHAR(1000),
 	priority INTEGER,
 	due DATE,
-	pomos INTEGER
+	pomos INTEGER,
+	completedpomos INTEGER DEFAULT 0,
+	completed BOOLEAN DEFAULT false
 	);
 	
 CREATE TABLE events (
@@ -24,7 +26,7 @@ CREATE TABLE notes (
 	);
 	
 INSERT INTO tasks
-VALUES (1, 'Build Database', 'Three separate tables, see notebook for details', 1, DATE '2017-10-16', 4);
+VALUES (1, 'Build Database', 'Three separate tables, see notebook for details', 1, DATE '2017-10-24', 4, 0, false);
 
 INSERT INTO events
 VALUES (1, 'Canopus Potluck', 'Make salami-wrapped tomatoes', DATE '2017-10-19', TIME '17:30:00', 'Prime Digital Academy, 301 South 4th Street Minneapolis MN 55415');

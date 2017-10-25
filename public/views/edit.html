@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-show="EC.eventItem">
     <h1>Enter Event Changes</h1>
     <div class="form-group">
         <input class="form-control" type="text" ng-value="EC.eventItem.title" ng-model="EC.title" name="title">
@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" ng-show="EC.taskItem">
     <h1>Enter Task Changes</h1>
     <div class="form-group">
         <input class="form-control" type="text" ng-value="EC.taskItem.title" ng-model="EC.title" name="title">
@@ -33,7 +33,7 @@
         <button ng-click="EC.submitTaskEdit()" type="button" name="button" class="btn btn-success">Submit Task Edit</button>
     </div>
 </div>
-<div class="container">
+<div class="container" ng-show="EC.noteItem">
     <h1>Enter Note Changes</h1>
     <div class="form-group">
         <input class="form-control" type="text" ng-value="EC.noteItem.title" ng-model="EC.title" name="title">

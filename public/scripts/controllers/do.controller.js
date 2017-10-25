@@ -15,7 +15,6 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
         if (task.id === vm.taskId) {
             console.log('vm.taskItem: ', task);
             return task;
-
         }
     });
 
@@ -25,7 +24,6 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
     vm.restTime = 5;
     vm.timerCountdown = vm.workTime;
     vm.workRest = 'work';
-
 
     var seconds = vm.timerCountdown * 60;
     var timerRun = false;
@@ -83,41 +81,34 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
     }
 
     function reTimer() {
-        if (vm.pomoSeries < 1) {
-            seconds--;
-            if (vm.workRest === 'rest') {
-                $('.work-time').removeClass('active-timer');
-                $('.rest-time').addClass('active-timer');
-            } else {
-                $('.work-time').addClass('active-timer');
-                $('.rest-time').removeClass('active-timer');
-            }
-            if (seconds < 0) {
-                if (vm.workRest === 'work') {
+        seconds--;
+        if (vm.workRest === 'rest') {
+            $('.work-time').removeClass('active-timer');
+            $('.rest-time').addClass('active-timer');
+        } else {
+            $('.work-time').addClass('active-timer');
+            $('.rest-time').removeClass('active-timer');
+        }
+        if (seconds < 0) {
+            if (vm.workRest === 'work') {
+                if (vm.pomoSeries > 1) {
+                    vm.pomoSeries--;
                     alert("Break time!");
                     vm.workRest = 'rest';
                     seconds = 60 * vm.restTime;
                     vm.timerCountdown = toTimerOutput(seconds);
                 } else {
-                    vm.pomoSeries--;
-                    alert("Back to work!")
-                    vm.workRest = 'work';
-                    seconds = 60 * vm.workTime;
-                    vm.timerCountdown = toTimerOutput(seconds);
-                }
+                    vm.pomoSeries = 0;
+                };
             } else {
+                alert("Back to work!")
+                vm.workRest = 'work';
+                seconds = 60 * vm.workTime;
                 vm.timerCountdown = toTimerOutput(seconds);
             }
         } else {
-            swal({
-                title: 'This Task is Out of Planned Pomodoros',
-                width: 600,
-                padding: 100,
-                background: '#fff url(assets/page.JPG)'
-            }).then(function (taskId) {
-                vm.goToEditTask(taskId);
-            });
+            vm.timerCountdown = toTimerOutput(seconds);
         }
-    }
+    };
 });
 
