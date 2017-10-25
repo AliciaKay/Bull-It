@@ -125,3 +125,11 @@ textarea {
     text-align: center;
     display: inline-block;
   }
+
+  .center {
+      text-align: center;
+  }
+
+  .left-align {
+      text-align: left;
+  }

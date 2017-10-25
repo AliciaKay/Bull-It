@@ -10,6 +10,14 @@ myApp.controller('TodayController', function (ItemsService, $location) {
         return array;
     };
 
+    vm.getDonePomoNumber = function (num) {
+        var array = [];
+        for (var i = null; i < num; i++) {
+            array.push(i);
+        }
+        return array;
+    };
+
     vm.todaysDate = ItemsService.getToday;
 
     vm.events = ItemsService.eventsToday;
@@ -139,8 +147,8 @@ myApp.controller('TodayController', function (ItemsService, $location) {
     };
 
     vm.goToDoTask = function(id, pomos) {
-        ItemsService.taskToDo.id = id;
-        ItemsService.taskToDo.pomos = pomos;
+        ItemsService.taskToEdit.id = id;
+        ItemsService.taskToEdit.pomos = pomos;
         $location.path('/do');
     }
 

@@ -53,8 +53,8 @@ router.put('/:id', function (req, res) {
             res.sendStatus(500);
         } else {
             console.log('no connection error');
-            var queryString = 'UPDATE tasks SET title = $1, details = $2, priority = $3, due = $4, pomos = $5, pomoscompleted = $6, completed = $7 WHERE id = $8;';
-            client.query(queryString, [newTask.title, newTask.details, newTask.priority, newTask.due, newTask.pomos, newTask.pomoscompleted, newTask.completed, taskId], function (queryErr, resultObj) {
+            var queryString = 'UPDATE tasks SET title = $1, details = $2, priority = $3, due = $4, pomos = $5, completedpomos = $6, completed = $7 WHERE id = $8;';
+            client.query(queryString, [newTask.title, newTask.details, newTask.priority, newTask.due, newTask.pomos, newTask.completedpomos, newTask.completed, taskId], function (queryErr, resultObj) {
                 done();
                 if (queryErr) {
                     res.sendStatus(500)

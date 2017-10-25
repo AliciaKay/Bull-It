@@ -1,13 +1,17 @@
-
-  <div class="container container-fluid">
+<div class="container container-fluid">
+  <div class="center">
     <h1>Pomodoros Left for This Task: {{DC.pomoSeries}}</h1>
     <div class="work-time changer">
       <h4>Work Time</h4>
-      <button class="btn btn-danger btn-xs" ng-click="DC.changeTime('work', 1)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+      <button class="btn btn-danger btn-xs" ng-click="DC.changeTime('work', 1)">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </button>
 
       <h2 class="work-time-time">{{DC.workTime}}</h2>
 
-      <button class="btn btn-success btn-xs" ng-click="DC.changeTime('work', -1)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+      <button class="btn btn-success btn-xs" ng-click="DC.changeTime('work', -1)">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </button>
 
     </div>
 
@@ -19,12 +23,17 @@
 
     <div class="rest-time changer">
       <h4>Rest Time</h4>
-      <button class="btn btn-danger btn-xs" ng-click="DC.changeTime('break', 1)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+      <button class="btn btn-danger btn-xs" ng-click="DC.changeTime('break', 1)">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </button>
 
       <h2 class="rest-time-time">{{DC.restTime}}</h2>
 
-      <button class="btn btn-success btn-xs" ng-click="DC.changeTime('break', -1)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+      <button class="btn btn-success btn-xs" ng-click="DC.changeTime('break', -1)">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </button>
 
     </div>
-   
+    <h1>Completed Pomododoros: {{DC.completedpomos}} of {{DC.startingPomos}}</h1>
   </div>
+</div>

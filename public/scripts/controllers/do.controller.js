@@ -3,13 +3,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
 
     var vm = this;
 
-    vm.goToEditTask = function (id) {
-        ItemsService.taskToEdit.id = id;
-        console.log('edit task', id);
-        $location.path('/edit');
-    };
-
-    vm.taskId = ItemsService.taskToDo.id;
+    vm.taskId = ItemsService.taskToEdit.id;
 
     vm.taskItem = ItemsService.tasksToday.tasks.find(function (task) {
         if (task.id === vm.taskId) {
@@ -18,7 +12,9 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
         }
     });
 
+    vm.startingPomos = vm.taskItem.pomos;
     vm.pomoSeries = vm.taskItem.pomos;
+    vm.completedpomos = vm.taskItem.completedpomos;
 
     vm.workTime = 25;
     vm.restTime = 5;
@@ -92,7 +88,9 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
         if (seconds < 0) {
             if (vm.workRest === 'work') {
                 if (vm.pomoSeries > 1) {
+                    vm.completedpomos++;
                     vm.pomoSeries--;
+                    vm.submitTaskEdit();
                     alert("Break time!");
                     vm.workRest = 'rest';
                     seconds = 60 * vm.restTime;
@@ -110,5 +108,54 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
             vm.timerCountdown = toTimerOutput(seconds);
         }
     };
+
+    vm.submitTaskEdit = function () { 
+        console.log('got to submitTaskEdit function')
+        var title = vm.title;
+        var details = vm.details;
+        var priority = vm.priority;
+        var due = vm.due;
+        var pomos = vm.pomos;
+        var completedpomos = vm.completedpomos;
+        var completed = vm.completed;
+        var task = {};
+        if (title) {
+            task.title = vm.title;
+        } else {
+            task.title = vm.taskItem.title;
+        };
+        if (details) {
+            task.details = vm.details;
+        } else {
+            task.details = vm.taskItem.details;
+        };
+        if (priority) {
+            task.priority = vm.priority;
+        } else {
+            task.priority = vm.taskItem.priority;
+        };
+        if (due) {
+            task.due = vm.due;
+        } else {
+            task.due = vm.taskItem.due;
+        };
+        if (pomos) {
+            task.pomos = vm.pomos;
+        } else {
+            task.pomos = vm.taskItem.pomos;
+        };
+        if (completedpomos) {
+            task.completedpomos = vm.completedpomos;
+        } else {
+            task.completedpomos = vm.taskItem.completedpomos;
+        };
+        if (completed) {
+            task.completed = vm.completed;
+        } else {   
+            task.completed = vm.taskItem.completed;
+        };
+        console.log("task:", task);
+        ItemsService.editTask(vm.taskId, task);
+    }
 });
 

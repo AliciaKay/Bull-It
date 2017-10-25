@@ -19,9 +19,13 @@
                 </td>
                 <td>{{task.title}}</td>
                 <td>{{task.details}}</td>
-                <td>
+                <td class="left-align">
                     <span ng-repeat="glyph in TC.getPomoNumber(task.pomos)">
                         <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                    <br>
+                    <span ng-repeat="glyph in TC.getDonePomoNumber(task.completedpomos)">
+                        <span class="glyphicon glyphicon-ok-sign"></span>
                     </span>
                 </td>
                 <td>

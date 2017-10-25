@@ -15,7 +15,6 @@ myApp.service('ItemsService', function ($http) {
   self.eventToEdit = {id: ''};
   self.taskToEdit = {id: ''};
   self.noteToEdit = {id: ''};
-  self.taskToDo = {id: ''};
 
   self.addEventToDB = function (eventListObject) {
     $http({
@@ -128,9 +127,4 @@ myApp.service('ItemsService', function ($http) {
       self.getTodaysNotesFromDB();
     })
   }
-
-    self.doTask = function(id, pomos) {
-      
-
-    }
 });
