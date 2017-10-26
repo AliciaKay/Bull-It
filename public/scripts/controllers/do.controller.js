@@ -3,7 +3,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
 
     var vm = this;
 
-    vm.fillerIncrement = 300/(vm.minutes*60);
+    vm.fillerIncrement = 300/((seconds*60) * 60);
     /*
       fillerIncrement variable stores the value by which fillerHeight should increase.
   */
@@ -127,23 +127,27 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
         vm.timerCountdown = toTimerOutput(seconds);
         $('.rest-time').removeClass('active-timer');
         $('.work-time').removeClass('active-timer');
-        vm.fillerIncrement = 300/(vm.minutes*60);
+        vm.fillerIncrement = 300/(60 * vm.workTime);
         vm.fillerHeight = 0;
     }
 
     function reTimer() {
         seconds--;
-        vm.fillerHeight += vm.fillerIncrement;
+
         if (vm.workRest === 'rest') {
             $('.work-time').removeClass('active-timer');
             $('.rest-time').addClass('active-timer');
+            vm.fillerIncrement = 300/(60 * vm.restTime);
         } else {
             $('.work-time').addClass('active-timer');
             $('.rest-time').removeClass('active-timer');
+            vm.fillerIncrement = 300/(60 * vm.workTime);
         }
+        vm.fillerHeight += vm.fillerIncrement;
         if (seconds < 0) {
             if (vm.workRest === 'work') {
                 vm.completedpomos++;
+                vm.fillerHeight = 0;
                 if (vm.completedpomos < vm.startingPomos) {
                     vm.submitTaskEdit();
                     vm.workRest = 'rest';
@@ -166,6 +170,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
                 vm.workRest = 'work';
                 seconds = 60 * vm.workTime;
                 vm.timerCountdown = toTimerOutput(seconds);
+                vm.fillerHeight = 0;
                 swal({
                     title: 'Work Time!',
                     width: 600,
@@ -175,7 +180,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
             }
         } else {
             vm.timerCountdown = toTimerOutput(seconds);
-  
+
         }
     };
 
