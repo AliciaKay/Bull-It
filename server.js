@@ -11,6 +11,9 @@ var addNote = require('./routes/addNote');
 var getTodaysEvents = require('./routes/getTodaysEvents');
 var getTodaysTasks = require('./routes/getTodaysTasks');
 var getTodaysNotes = require('./routes/getTodaysNotes');
+var getThisWeeksEvents = require('./routes/getThisWeeksEvents');
+var getThisWeeksTasks = require('./routes/getThisWeeksTasks');
+var getThisWeeksNotes = require('./routes/getThisWeeksNotes');
 
 app.listen(port, function(){
     console.log('Listening on port:', port);
@@ -28,3 +31,6 @@ app.use('/addNote', addNote);
 app.use('/getTodaysEvents', getTodaysEvents);
 app.use('/getTodaysTasks', getTodaysTasks);
 app.use('/getTodaysNotes', getTodaysNotes);
+app.use('/getThisWeeksEvents', getThisWeeksEvents);
+app.use('/getThisWeeksTasks', getThisWeeksTasks);
+app.use('/getThisWeeksNotes', getThisWeeksNotes);

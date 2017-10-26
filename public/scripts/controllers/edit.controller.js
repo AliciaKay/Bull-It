@@ -1,4 +1,4 @@
-myApp.controller('EditItemController', function (ItemsService) {
+myApp.controller('EditItemController', function (ItemsService, $location) {
     console.log('in editcontroller');
 
     var vm = this;
@@ -28,8 +28,8 @@ myApp.controller('EditItemController', function (ItemsService) {
     vm.submitEventEdit = function () { 
         var title = vm.title;
         var details = vm.details;
-        var date = vm.eventDate;
-        var time = vm.eventTime;
+        var date = vm.date;
+        var time = vm.time;
         var location = vm.location;
         console.log("submitEdit:", title, details, date, time, location);
         var event = {};
@@ -60,6 +60,7 @@ myApp.controller('EditItemController', function (ItemsService) {
         }
         console.log("event:", event);
         ItemsService.editEvent(vm.eventId, event);
+        $location.path('/today');
     }
 
     vm.submitTaskEdit = function () { 
@@ -109,6 +110,7 @@ myApp.controller('EditItemController', function (ItemsService) {
         };
         console.log("task:", task);
         ItemsService.editTask(vm.taskId, task);
+        $location.path('/today');
     }
 
     vm.submitNoteEdit = function() {
@@ -134,5 +136,6 @@ myApp.controller('EditItemController', function (ItemsService) {
         };
         console.log("note:", note);
         ItemsService.editNote(vm.noteId, note);
+        $location.path('/today');
     }
 });

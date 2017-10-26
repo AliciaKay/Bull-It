@@ -15,8 +15,16 @@
             </thead>
 
             <tr ng-repeat="task in TC.tasks.tasks">
-                <td ng-show="task.completed === true">Done!</td>
-                <td ng-show="task.completed === false">To Be completed</td>
+                <td ng-show="task.completed === false">
+                    <button class="btn btn-success btn-xs" ng-click="TC.goToDoTask(task.id, task.pomos)">
+                        <span class="glyphicon glyphicon-unchecked"></span>
+                    </button>
+                </td>
+                <td ng-show="task.completed === true">
+                    <button class="btn btn-basic btn-xs" ng-click="TC.cannotDoTask()">
+                        <span class="glyphicon glyphicon-check"></span>
+                    </button>
+                </td>
                 <td class="priority">
                     <span class="badge">{{task.priority}}</span>
                 </td>
@@ -38,12 +46,7 @@
                     <button class="btn btn-warning btn-xs" ng-click="TC.goToEditTask(task.id)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button class="btn btn-success btn-xs" ng-show="task.completed === false" ng-click="TC.goToDoTask(task.id, task.pomos)">
-                        <span class="glyphicon glyphicon-unchecked"></span>
-                    </button>
-                    <button class="btn btn-basic btn-xs" ng-show="task.completed === true" ng-click="TC.cannotDoTask()">
-                            <span class="glyphicon glyphicon-check"></span>
-                        </button>
+
                 </td>
             </tr>
 

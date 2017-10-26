@@ -127,4 +127,25 @@ myApp.service('ItemsService', function ($http) {
       self.getTodaysNotesFromDB();
     })
   }
+
+  self.getThisWeeksEventsFromDB = function () {
+    $http.get('/getThisWeeksEvents').then(function (response) {
+      console.log('in getThisWeeksEventsFromDB in the service', response.data)
+      self.eventsToday.events = response.data;
+    });
+  };
+
+  self.getThisWeeksTasksFromDB = function () {
+    $http.get('/getThisWeeksTasks').then(function (response) {
+      console.log('in getThisWeeksTasksFromDB in the service', response.data)
+      self.tasksToday.tasks = response.data;
+    });
+  };
+
+  self.getThisWeeksNotesFromDB = function () {
+    $http.get('/getThisWeeksNotes').then(function (response) {
+      console.log('in getThisWeeksNotesFromDB in the service', response.data)
+      self.notesToday.notes = response.data;
+    });
+  };
 });

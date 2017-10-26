@@ -3,6 +3,13 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
 
     var vm = this;
 
+    vm.fillerIncrement = 300/(vm.minutes*60);
+    /*
+      fillerIncrement variable stores the value by which fillerHeight should increase.
+  */
+    
+    vm.fillerHeight = 0; 
+
     vm.taskId = ItemsService.taskToEdit.id;
 
     vm.taskItem = ItemsService.tasksToday.tasks.find(function (task) {
@@ -13,10 +20,22 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
     });
 
     vm.startingPomos = vm.taskItem.pomos;
-    vm.pomoSeries = vm.taskItem.pomos - vm.taskItem.completedpomos;
     vm.completedpomos = vm.taskItem.completedpomos;
+    vm.pomoSeries = vm.startingPomos - vm.completedpomos;
 
-    vm.completeTask = function(){
+    vm.completeTask = function() {
+        vm.taskItem.completed = true;
+        vm.submitTaskEdit();
+        $location.path('/today');
+    };
+
+    vm.goToEditTask = function (id) {
+        ItemsService.taskToEdit.id = id;
+        console.log('edit task', id);
+        $location.path('/edit');
+    };
+
+    vm.completeTaskAlert = function(){
         swal({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -37,8 +56,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
                 vm.taskItem.completed = true,
                 vm.submitTaskEdit(),
                 $location.path('/today'),
-            )
-        }, function (dismiss) {
+        )}, function (dismiss) {
             // dismiss can be 'cancel', 'overlay',
             // 'close', and 'timer'
             if (dismiss === 'cancel') {
@@ -109,10 +127,13 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
         vm.timerCountdown = toTimerOutput(seconds);
         $('.rest-time').removeClass('active-timer');
         $('.work-time').removeClass('active-timer');
+        vm.fillerIncrement = 300/(vm.minutes*60);
+        vm.fillerHeight = 0;
     }
 
     function reTimer() {
         seconds--;
+        vm.fillerHeight += vm.fillerIncrement;
         if (vm.workRest === 'rest') {
             $('.work-time').removeClass('active-timer');
             $('.rest-time').addClass('active-timer');
@@ -122,25 +143,39 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
         }
         if (seconds < 0) {
             if (vm.workRest === 'work') {
-                if (vm.pomoSeries > 1) {
-                    vm.completedpomos++;
-                    vm.pomoSeries--;
+                vm.completedpomos++;
+                if (vm.completedpomos < vm.startingPomos) {
                     vm.submitTaskEdit();
-                    alert("Break time!");
                     vm.workRest = 'rest';
                     seconds = 60 * vm.restTime;
+                    
                     vm.timerCountdown = toTimerOutput(seconds);
+                    swal({
+                        title: 'Break Time!',
+                        width: 600,
+                        padding: 100,
+                        background: '#fff url(assets/page.JPG)'
+                    });
                 } else {
-                    vm.pomoSeries = 0;
+                    vm.completedpomos = vm.startingPomos;
+                    $interval.cancel(timerRun);
+                    timerRun = false;
+                    vm.completeTask();
                 };
             } else {
-                alert("Back to work!")
                 vm.workRest = 'work';
                 seconds = 60 * vm.workTime;
                 vm.timerCountdown = toTimerOutput(seconds);
+                swal({
+                    title: 'Work Time!',
+                    width: 600,
+                    padding: 100,
+                    background: '#fff url(assets/page.JPG)'
+                });
             }
         } else {
             vm.timerCountdown = toTimerOutput(seconds);
+  
         }
     };
 

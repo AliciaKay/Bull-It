@@ -5,8 +5,8 @@
         <textarea class="form-control" rows="5" id="details" ng-value="EC.eventItem.details" ng-model="EC.details"></textarea>
         <form>
             <h5>When is this event?</h5>
-            <input type="date" ng-value="EC.eventItem.date" ng-model="EC.event.eventDate">
-            <input type="time" ng-value="EC.eventItem.time" ng-model="EC.event.eventTime">
+            <input type="date" ng-value="EC.eventItem.date" ng-model="EC.date">
+            <input type="time" ng-value="EC.eventItem.time" ng-model="EC.time">
             <input type="text" ng-value="EC.eventItem.location" ng-model="EC.location">
            
         </form>
@@ -31,7 +31,7 @@
             <label>
                 <input type="number" ng-value="EC.taskItem.pomos" ng-model="EC.pomos" min="1" max="10"> half-hours</label>
                 <br>
-                <label>Check if this task has been completed: <input type="checkbox"  ng-checked="EC.taskItem.completed" ng-model="EC.completed"></label>
+                <label>Completed: <input type="radio" ng-model="EC.completed" value="true" name="completestatus" ng-checked="!EC.completed"><br>Not Completed: <input type="radio" ng-model="EC.completed" value="false" name="completestatus" ng-checked="EC.completed"></label>
             </form>
         <button ng-click="EC.submitTaskEdit()" type="button" name="button" class="btn btn-success">Submit Task Edit</button>
     </div>

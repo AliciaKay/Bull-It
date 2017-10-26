@@ -1,2 +1,121 @@
-<div>This week View
+<div class="container">
+    <h4>Today is {{WC.todaysDate | date:'EEEE, MMMM d, yyyy'}}</h4>
+    <h3>Tasks Due This Week:</h3>
+    <div class="container">
+        <table class="table table-active table-responsive">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Title</th>
+                    <th>Details</th>
+                    <th>Due Date</th>
+                    <th>Pomodoros</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="task in WC.tasks.tasks">
+                <td ng-show="task.completed === false">
+                    <button class="btn btn-success btn-xs" ng-click="WC.goToDoTask(task.id, task.pomos)">
+                        <span class="glyphicon glyphicon-unchecked"></span>
+                    </button>
+                </td>
+                <td ng-show="task.completed === true">
+                    <button class="btn btn-basic btn-xs" ng-click="WC.cannotDoTask()">
+                        <span class="glyphicon glyphicon-check"></span>
+                    </button>
+                </td>
+                <td class="priority">
+                    <span class="badge">{{task.priority}}</span>
+                </td>
+                <td>{{task.title}}</td>
+                <td>{{task.details}}</td>
+                <td>{{task.due | date:'EEE, M-d'}}</td>
+                <td class="left-align">
+                    <span ng-repeat="glyph in WC.getPomoNumber(task.pomos)">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                    <br>
+                    <span ng-repeat="glyph in WC.getDonePomoNumber(task.completedpomos)">
+                        <span class="glyphicon glyphicon-ok-sign"></span>
+                    </span>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-xs" ng-click="WC.cancelTask(task.id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    <button class="btn btn-warning btn-xs" ng-click="WC.goToEditTask(task.id)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+            </tr>
+
+        </table>
     </div>
+</div>
+</div>
+<div class="container">
+    <h3>This Week's Events:</h3>
+    <div class="container">
+        <table class="table table-active table-responsive">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Details</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="event in WC.events.events">
+                <td>{{event.title}}</td>
+                <td>{{event.details}}</td>
+                <td>{{event.date | date:'EEE, M-d'}}</td>
+                <td>{{event.time | date:'hh:mm a'}}</td>
+                <td>{{event.location}}</td>
+                <td>
+                    <button class="btn btn-danger btn-xs" ng-click="WC.cancelEvent(event.id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    <button class="btn btn-warning btn-xs" ng-click="WC.goToEditEvent(event.id)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+<div class="container">
+    <h3>Notes for This Week:</h3>
+    <div class="container">
+        <table class="table table-active table-responsive">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Details</th>
+                    <th>Date</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="note in WC.notes.notes">
+                <td>{{note.title}}</td>
+                <td>{{note.details}}</td>
+                <td>{{note.date | date:'EEE, M-d'}}</td>
+                <td>
+                    <button class="btn btn-danger btn-xs" ng-click="WC.cancelNote(note.id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    <button class="btn btn-warning btn-xs" ng-click="WC.goToEditNote(note.id)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>

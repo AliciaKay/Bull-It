@@ -1,6 +1,11 @@
 <div class="container container-fluid">
   <div class="center">
-    <h1>Pomodoros Left for This Task: {{DC.pomoSeries}}</h1>
+    <h3>{{DC.taskItem.title}}</h3>
+    <h4>{{DC.taskItem.details}}</h4>
+    <div>
+
+    </div>
+    <h2>Pomodoros Left for This Task: {{DC.startingPomos - DC.completedpomos}}</h2>
     <div class="work-time changer">
       <h4>Work Time</h4>
       <button class="btn btn-danger btn-xs" ng-click="DC.changeTime('work', 1)">
@@ -16,6 +21,7 @@
     </div>
 
     <div class="timer">
+      <div id="filler" ng-style="{height : DC.fillerHeight + 'px'}"></div>
       <button class="btn btn-primary btn-xs" ng-click="DC.toggleTimer()">Start/Stop</button>
       <h2>{{DC.timerCountdown}}</h2>
       <button class="btn btn-primary btn-xs" ng-click="DC.reset()">Reset</button>
@@ -34,9 +40,10 @@
       </button>
 
     </div>
-    <h1>Completed Pomododoros: {{DC.completedpomos}} of {{DC.startingPomos}}</h1>
+    <h2>Completed Pomododoros: {{DC.completedpomos}} of {{DC.startingPomos}}</h2>
   </div>
-  <div>
-    <button class="btn btn-primary right-align" ng-click="DC.completeTask()">Done</button>
+  <div class="dobuttons">
+    <button class="btn btn-primary" ng-click="DC.completeTaskAlert()">Done</button>
+    <button class="btn btn-warning"ng-click="DC.goToEditTask(DC.taskItem.id)">Add More Pomodoros</button>
   </div>
 </div>

@@ -126,6 +126,14 @@ textarea {
     display: inline-block;
   }
 
+  #filler{
+    background : #ddffcc;
+    height: 0px;
+    width: 300px;
+    position:absolute;
+    bottom:0;
+  }
+
   .center {
       text-align: center;
   }
@@ -136,4 +144,8 @@ textarea {
 
   .right-align {
       float: right;
+  }
+
+  .dobuttons {
+      text-align: center;
   }
