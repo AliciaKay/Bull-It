@@ -1,3 +1,12 @@
+#filler{
+    background-color : #ddffcc;
+    height: 0px;
+    width: 300px;
+    position:absolute;
+    bottom:0;
+    z-index: -1
+  }
+
 h1, p {
     font-family: 'Satisfy', cursive;
 }
@@ -126,13 +135,7 @@ textarea {
     display: inline-block;
   }
 
-  #filler{
-    background : #ddffcc;
-    height: 0px;
-    width: 300px;
-    position:absolute;
-    bottom:0;
-  }
+
 
   .center {
       text-align: center;

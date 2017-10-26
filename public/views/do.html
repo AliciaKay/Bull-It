@@ -21,10 +21,19 @@
     </div>
 
     <div class="timer">
+        
+      <div class="time">
+        <span>
+          <button class="btn btn-primary btn-xs" ng-click="DC.toggleTimer()">Start/Stop</button>
+        </span>
+        <span>
+          <h2>{{DC.timerCountdown}}</h2>
+        </span>
+        <span>
+          <button class="btn btn-primary btn-xs" ng-click="DC.reset()">Reset</button>
+        </span>
+      </div>
       <div id="filler" ng-style="{height : DC.fillerHeight + 'px'}"></div>
-      <button class="btn btn-primary btn-xs" ng-click="DC.toggleTimer()">Start/Stop</button>
-      <h2>{{DC.timerCountdown}}</h2>
-      <button class="btn btn-primary btn-xs" ng-click="DC.reset()">Reset</button>
     </div>
 
     <div class="rest-time changer">
@@ -44,6 +53,6 @@
   </div>
   <div class="dobuttons">
     <button class="btn btn-primary" ng-click="DC.completeTaskAlert()">Done</button>
-    <button class="btn btn-warning"ng-click="DC.goToEditTask(DC.taskItem.id)">Add More Pomodoros</button>
+    <button class="btn btn-warning" ng-click="DC.goToEditTask(DC.taskItem.id)">Add More Pomodoros</button>
   </div>
 </div>
