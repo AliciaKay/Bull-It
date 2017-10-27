@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<div class="container" ng-show="EC.taskItem">
+<div class="container center" ng-show="EC.taskItem">
     <h1>Enter Task Changes</h1>
     <div class="form-group">
         <input class="form-control" type="text" ng-value="EC.taskItem.title" ng-model="EC.title" name="title">
@@ -22,7 +22,13 @@
         <form>
             <h5>Select Priority:</h5>
             <label>
-                <input type="number" name="priority" ng-value="EC.taskItem.priority" ng-model="EC.priority"> 1, 2, or 3</label>
+                <input type="radio" name="priority" value="1" ng-model="EC.priority">High</label>
+            <br>
+            <label>
+                <input type="radio" name="priority" value="2" ng-model="EC.priority">Medium</label>
+            <br>
+            <label>
+                <input type="radio" name="priority" value="3" ng-model="EC.priority">Low</label>
             <br>
             <h5>Select Due Date</h5>
             <input type="date" ng-value="EC.taskItem.due" ng-model="EC.due">

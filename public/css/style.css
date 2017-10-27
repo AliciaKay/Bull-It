@@ -1,5 +1,5 @@
 #filler{
-    background-color : #ddffcc;
+    background-image:url("../assets/background.jpg");
     height: 0px;
     width: 300px;
     position:absolute;
@@ -8,7 +8,7 @@
   }
 
 h1, p {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Permanent Marker', cursive;
 }
 
 h4, h3{
@@ -28,7 +28,8 @@ h2 {
 }
 
 h4 {
-    text-align: center
+    text-align: center;
+    font-family: 'Architects Daughter', cursive; 
 }
 
 h5 {
@@ -36,13 +37,13 @@ h5 {
 }
 
 th {
-    font-family: 'Architects Daughter', cursive;
+   font-family: 'Fredericka the Great', cursive;
     background-color: whitesmoke;
     text-align: center
 }
 
 td {
-    font-family: 'Homemade Apple', cursive;
+    font-family: 'Permanent Marker', cursive;
     text-align: center
 }
 
@@ -57,30 +58,47 @@ body {
     background-position: top-right;
 }
 
-input[type="text"] {
-    font-family: 'Satisfy', cursive;
-    width: 50% !important;
-}
-
-input[type="radio"] {
+form-group {
     font-family: 'Architects Daughter', cursive; 
-}
-
-input[type="date"] {
-    font-family: 'Architects Daughter', cursive; 
-}
-
-input[type="time"] {
-    font-family: 'Architects Daughter', cursive; 
+    margin: auto;  
+    text-align: center; 
 }
 
 label {
     font-family: 'Architects Daughter', cursive; 
+    margin: auto;
+}
+
+input[type="text"] {
+    font-family: 'Satisfy', cursive;
+    width: 50% !important;
+    margin: auto;
+}
+
+input[type="radio"] {
+    font-family: 'Architects Daughter', cursive; 
+    margin: auto;
+}
+
+input[type="date"] {
+    font-family: 'Architects Daughter', cursive; 
+    margin: auto;
+}
+
+input[type="time"] {
+    font-family: 'Architects Daughter', cursive; 
+    margin: auto;
+}
+
+label {
+    font-family: 'Architects Daughter', cursive; 
+    margin: auto;
 }
 
 textarea {
     font-family: 'Architects Daughter', cursive; 
     width: 50% !important;
+    margin: auto;
 }
 
 .work-time-time {

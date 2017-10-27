@@ -5,17 +5,18 @@
         <table class="table table-active table-responsive">
             <thead>
                 <tr>
+                    <th>Day</th>
                     <th>Status</th>
                     <th>Priority</th>
                     <th>Title</th>
                     <th>Details</th>
-                    <th>Due Date</th>
                     <th>Pomodoros</th>
                     <th>Options</th>
                 </tr>
             </thead>
 
             <tr ng-repeat="task in WC.tasks.tasks">
+                <td>{{task.due | date:'EEEE, MM-d'}}</td>
                 <td ng-show="task.completed === false">
                     <button class="btn btn-success btn-xs" ng-click="WC.goToDoTask(task.id, task.pomos)">
                         <span class="glyphicon glyphicon-unchecked"></span>
@@ -31,7 +32,7 @@
                 </td>
                 <td>{{task.title}}</td>
                 <td>{{task.details}}</td>
-                <td>{{task.due | date:'EEE, M-d'}}</td>
+
                 <td class="left-align">
                     <span ng-repeat="glyph in WC.getPomoNumber(task.pomos)">
                         <span class="glyphicon glyphicon-time"></span>
@@ -61,9 +62,9 @@
         <table class="table table-active table-responsive">
             <thead>
                 <tr>
+                    <th>Day</th>
                     <th>Title</th>
                     <th>Details</th>
-                    <th>Date</th>
                     <th>Time</th>
                     <th>Location</th>
                     <th>Options</th>
@@ -71,9 +72,10 @@
             </thead>
 
             <tr ng-repeat="event in WC.events.events">
+                <td>{{event.date | date:'EEEE, MM-d'}}</td>
                 <td>{{event.title}}</td>
                 <td>{{event.details}}</td>
-                <td>{{event.date | date:'EEE, M-d'}}</td>
+
                 <td>{{event.time | date:'hh:mm a'}}</td>
                 <td>{{event.location}}</td>
                 <td>
@@ -95,17 +97,17 @@
         <table class="table table-active table-responsive">
             <thead>
                 <tr>
+                    <th>Day</th>
                     <th>Title</th>
                     <th>Details</th>
-                    <th>Date</th>
                     <th>Options</th>
                 </tr>
             </thead>
 
             <tr ng-repeat="note in WC.notes.notes">
+                <td>{{note.date | date:'EEEE, MM-d'}}</td>
                 <td>{{note.title}}</td>
                 <td>{{note.details}}</td>
-                <td>{{note.date | date:'EEE, M-d'}}</td>
                 <td>
                     <button class="btn btn-danger btn-xs" ng-click="WC.cancelNote(note.id)">
                         <span class="glyphicon glyphicon-trash"></span>

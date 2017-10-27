@@ -2,6 +2,50 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
     console.log('in thisweekcontroller');
 
     var vm = this;
+
+    vm.events = ItemsService.eventsToday;
+    vm.tasks = ItemsService.tasksToday;
+    vm.notes = ItemsService.notesToday;
+
+    vm.dateFinderT = new Date(vm.tasks.tasks.due);
+    vm.dateFinderE = new Date(vm.events.events.date);
+    vm.dateFinderN = new Date(vm.notes.notes.date);
+
+    vm.checkdayM = function(date) {
+        if (date.getDay() === 1);
+        return true;
+    };
+
+    vm.checkdayT = function(date) {
+        if (date.getDay() === 2);
+        return true;
+    };
+
+    vm.checkdayW = function(date) {
+        if (date.getDay() === 3);
+        return true;
+    };
+
+    vm.checkdayTh = function(date) {
+        if (date.getDay() === 4);
+        return true;
+    };
+
+    vm.checkdayF = function(date) {
+        if (date.getDay() === 5);
+        return true;
+    };
+
+    vm.checkdayS = function(date) {
+        if (date.getDay() === 6);
+        return true;
+    };
+
+    vm.checkdaySu = function(date) {
+        if (date.getDay() === 0);
+        return true;
+    };
+
     vm.todaysDate = ItemsService.getToday;
 
     vm.getPomoNumber = function (num) {

@@ -8,13 +8,13 @@
     <h2>Pomodoros Left for This Task: {{DC.startingPomos - DC.completedpomos}}</h2>
     <div class="work-time changer">
       <h4>Work Time</h4>
-      <button class="btn btn-danger btn-xs" ng-click="DC.changeTime('work', 1)">
+      <button class="btn btn-primary btn-xs" ng-click="DC.changeTime('work', 1)">
         <span class="glyphicon glyphicon-chevron-up"></span>
       </button>
 
       <h2 class="work-time-time">{{DC.workTime}}</h2>
 
-      <button class="btn btn-success btn-xs" ng-click="DC.changeTime('work', -1)">
+      <button class="btn btn-primary btn-xs" ng-click="DC.changeTime('work', -1)">
         <span class="glyphicon glyphicon-chevron-down"></span>
       </button>
 
@@ -38,13 +38,13 @@
 
     <div class="rest-time changer">
       <h4>Rest Time</h4>
-      <button class="btn btn-danger btn-xs" ng-click="DC.changeTime('break', 1)">
+      <button class="btn btn-primary btn-xs" ng-click="DC.changeTime('break', 1)">
         <span class="glyphicon glyphicon-chevron-up"></span>
       </button>
 
       <h2 class="rest-time-time">{{DC.restTime}}</h2>
 
-      <button class="btn btn-success btn-xs" ng-click="DC.changeTime('break', -1)">
+      <button class="btn btn-primary btn-xs" ng-click="DC.changeTime('break', -1)">
         <span class="glyphicon glyphicon-chevron-down"></span>
       </button>
 
