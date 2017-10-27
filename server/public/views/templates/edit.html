@@ -1,0 +1,63 @@
+<div class="container" ng-show="EC.eventItem">
+    <h1>Enter Event Changes</h1>
+    <div class="form-group">
+        <input class="form-control" type="text" ng-value="EC.eventItem.title" ng-model="EC.title" name="title">
+        <textarea class="form-control" rows="5" id="details" ng-value="EC.eventItem.details" ng-model="EC.details"></textarea>
+        <form>
+            <h5>When is this event?</h5>
+            <input type="date" ng-value="EC.eventItem.date" ng-model="EC.date">
+            <input type="time" ng-value="EC.eventItem.time" ng-model="EC.time">
+            <input type="text" ng-value="EC.eventItem.location" ng-model="EC.location">
+           
+        </form>
+        <button ng-click="EC.submitEventEdit()" type="button" name="button" class="btn btn-success">Submit Event Edit</button>
+    </div>
+</div>
+
+<div class="container center" ng-show="EC.taskItem">
+    <h1>Enter Task Changes</h1>
+    <div class="form-group">
+        <input class="form-control" type="text" ng-value="EC.taskItem.title" ng-model="EC.title" name="title">
+        <textarea class="form-control" rows="5" id="details" ng-value="EC.taskItem.details" ng-model="EC.details"></textarea>
+        <form>
+            <h5>Select Priority:</h5>
+            <label>
+                <input type="radio" name="priority" value="1" ng-model="EC.priority">High</label>
+            <br>
+            <label>
+                <input type="radio" name="priority" value="2" ng-model="EC.priority">Medium</label>
+            <br>
+            <label>
+                <input type="radio" name="priority" value="3" ng-model="EC.priority">Low</label>
+            <br>
+            <h5>Select Due Date</h5>
+            <input type="date" ng-value="EC.taskItem.due" ng-model="EC.due">
+            <br>
+            <h5>Approximately how long will this take to complete?</h5>
+            <label>
+                <input type="number" ng-value="EC.taskItem.pomos" ng-model="EC.pomos" min="1" max="10"> half-hours</label>
+                <br>
+                <label>Completed: <input type="radio" ng-model="EC.completed" value="true" name="completestatus" ng-checked="!EC.completed"><br>Not Completed: <input type="radio" ng-model="EC.completed" value="false" name="completestatus" ng-checked="EC.completed"></label>
+            </form>
+        <button ng-click="EC.submitTaskEdit()" type="button" name="button" class="btn btn-success">Submit Task Edit</button>
+    </div>
+</div>
+<div class="container" ng-show="EC.noteItem">
+    <h1>Enter Note Changes</h1>
+    <div class="form-group">
+        <input class="form-control" type="text" ng-value="EC.noteItem.title" ng-model="EC.title" name="title">
+        <textarea class="form-control" rows="5" id="details" ng-value="EC.noteItem.details" ng-model="EC.details"></textarea>
+
+        <form>
+            <h5>Add Note to Today?</h5>
+            <label>
+                <input type="radio" name="assignNoteDate" ng-value="EC.todaysDate" ng-model="EC.task.date">Yes, add to {{EC.todaysDate | date:'MM-dd-yyyy'}}</label>
+            <br>
+            <label>
+                <input type="radio" name="assignNoteDate" value="no" ng-model="note">No, choose another date:</label>
+            <br>
+            <input ng-show="note === 'no'" type="date" ng-model="EC.task.date">
+        </form>
+        <button ng-click="EC.submitNoteEdit()" type="button" name="button" class="btn btn-success">Submit Note Edit</button>
+    </div>
+</div>

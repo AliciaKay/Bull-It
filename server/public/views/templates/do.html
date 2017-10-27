@@ -1,0 +1,58 @@
+<div class="container container-fluid">
+  <div class="center">
+    <h3>{{DC.taskItem.title}}</h3>
+    <h4>{{DC.taskItem.details}}</h4>
+    <div>
+
+    </div>
+    <h2>Pomodoros Left for This Task: {{DC.startingPomos - DC.completedpomos}}</h2>
+    <div class="work-time changer">
+      <h4>Work Time</h4>
+      <button class="btn btn-primary btn-xs" ng-click="DC.changeTime('work', 1)">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </button>
+
+      <h2 class="work-time-time">{{DC.workTime}}</h2>
+
+      <button class="btn btn-primary btn-xs" ng-click="DC.changeTime('work', -1)">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </button>
+
+    </div>
+
+    <div class="timer">
+        
+      <div class="time">
+        <span>
+          <button class="btn btn-primary btn-xs" ng-click="DC.toggleTimer()">Start/Stop</button>
+        </span>
+        <span>
+          <h2>{{DC.timerCountdown}}</h2>
+        </span>
+        <span>
+          <button class="btn btn-primary btn-xs" ng-click="DC.reset()">Reset</button>
+        </span>
+      </div>
+      <div id="filler" ng-style="{height : DC.fillerHeight + 'px'}"></div>
+    </div>
+
+    <div class="rest-time changer">
+      <h4>Rest Time</h4>
+      <button class="btn btn-primary btn-xs" ng-click="DC.changeTime('break', 1)">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </button>
+
+      <h2 class="rest-time-time">{{DC.restTime}}</h2>
+
+      <button class="btn btn-primary btn-xs" ng-click="DC.changeTime('break', -1)">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </button>
+
+    </div>
+    <h2>Completed Pomododoros: {{DC.completedpomos}} of {{DC.startingPomos}}</h2>
+  </div>
+  <div class="dobuttons">
+    <button class="btn btn-primary" ng-click="DC.completeTaskAlert()">Done</button>
+    <button class="btn btn-warning" ng-click="DC.goToEditTask(DC.taskItem.id)">Add More Pomodoros</button>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="container">
+    <h4>Today is {{TC.todaysDate | date:'EEEE, MMMM d, yyyy'}}</h4>
+    <h3>Tasks Due Today:</h3>
+    <div class="container">
+        <table class="table table-active table-responsive">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Title</th>
+                    <th>Details</th>
+                    <th>Pomodoros</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="task in TC.tasks.tasks">
+                <td ng-show="task.completed === false">
+                    <button class="btn btn-success btn-xs" ng-click="TC.goToDoTask(task.id, task.pomos)">
+                        <span class="glyphicon glyphicon-unchecked"></span>
+                    </button>
+                </td>
+                <td ng-show="task.completed === true">
+                    <button class="btn btn-basic btn-xs" ng-click="TC.cannotDoTask()">
+                        <span class="glyphicon glyphicon-check"></span>
+                    </button>
+                </td>
+                <td class="priority">
+                    <span class="badge">{{task.priority}}</span>
+                </td>
+                <td>{{task.title}}</td>
+                <td>{{task.details}}</td>
+                <td class="left-align">
+                    <span ng-repeat="glyph in TC.getPomoNumber(task.pomos)">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                    <br>
+                    <span ng-repeat="glyph in TC.getDonePomoNumber(task.completedpomos)">
+                        <span class="glyphicon glyphicon-ok-sign"></span>
+                    </span>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-xs" ng-click="TC.cancelTask(task.id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    <button class="btn btn-warning btn-xs" ng-click="TC.goToEditTask(task.id)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+</div>
+<div class="container">
+    <h3>Today's Events:</h3>
+    <div class="container">
+        <table class="table table-active table-responsive">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Details</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="event in TC.events.events">
+                <td>{{event.title}}</td>
+                <td>{{event.details}}</td>
+                <td>{{event.time | date:'hh:mm a'}}</td>
+                <td>{{event.location}}</td>
+                <td>
+                    <button class="btn btn-danger btn-xs" ng-click="TC.cancelEvent(event.id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    <button class="btn btn-warning btn-xs" ng-click="TC.goToEditEvent(event.id)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+<div class="container">
+    <h3>Notes:</h3>
+    <div class="container">
+        <table class="table table-active table-responsive">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Details</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tr ng-repeat="note in TC.notes.notes">
+                <td>{{note.title}}</td>
+                <td>{{note.details}}</td>
+                <td>
+                    <button class="btn btn-danger btn-xs" ng-click="TC.cancelNote(note.id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    <button class="btn btn-warning btn-xs" ng-click="TC.goToEditNote(note.id)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
