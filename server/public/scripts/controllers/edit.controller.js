@@ -1,25 +1,25 @@
-myApp.controller('EditItemController', function (ItemsService, $location) {
+myApp.controller('EditItemController', function (UserService, $location) {
     console.log('in editcontroller');
 
     var vm = this;
-    vm.todaysDate = ItemsService.getToday;
-    vm.eventId = ItemsService.eventToEdit.id;
-    vm.taskId = ItemsService.taskToEdit.id;
-    vm.noteId = ItemsService.noteToEdit.id;
+    vm.todaysDate = UserService.getToday;
+    vm.eventId = UserService.eventToEdit.id;
+    vm.taskId = UserService.taskToEdit.id;
+    vm.noteId = UserService.noteToEdit.id;
 
-    vm.eventItem = ItemsService.eventsToday.events.find(function(event) {
+    vm.eventItem = UserService.eventsToday.events.find(function(event) {
         if (event.id === vm.eventId) {
             return event;
         }
     });
 
-    vm.taskItem = ItemsService.tasksToday.tasks.find(function(task) {
+    vm.taskItem = UserService.tasksToday.tasks.find(function(task) {
         if (task.id === vm.taskId) {
             return task;
         }
     });
 
-    vm.noteItem = ItemsService.notesToday.notes.find(function(note) {
+    vm.noteItem = UserService.notesToday.notes.find(function(note) {
         if (note.id === vm.noteId) {
             return note;
         }
@@ -59,7 +59,7 @@ myApp.controller('EditItemController', function (ItemsService, $location) {
             event.location = vm.eventItem.location;
         }
         console.log("event:", event);
-        ItemsService.editEvent(vm.eventId, event);
+        UserService.editEvent(vm.eventId, event);
         $location.path('/today');
     }
 
@@ -109,7 +109,7 @@ myApp.controller('EditItemController', function (ItemsService, $location) {
             task.completed = vm.taskItem.completed;
         };
         console.log("task:", task);
-        ItemsService.editTask(vm.taskId, task);
+        UserService.editTask(vm.taskId, task);
         $location.path('/today');
     }
 
@@ -135,7 +135,7 @@ myApp.controller('EditItemController', function (ItemsService, $location) {
             note.date = vm.noteItem.date;
         };
         console.log("note:", note);
-        ItemsService.editNote(vm.noteId, note);
+        UserService.editNote(vm.noteId, note);
         $location.path('/today');
     }
 });

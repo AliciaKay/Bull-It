@@ -1,8 +1,8 @@
-myApp.controller('AddItemController', function (ItemsService, $location) {
+myApp.controller('AddItemController', function (UserService, $location) {
     console.log('in addcontroller');
 
     var vm = this;
-    vm.todaysDate = ItemsService.getToday;
+    vm.todaysDate = UserService.getToday;
 
     vm.clearAllInputs = function () {
         console.log('clearing all the inputs');
@@ -33,7 +33,7 @@ myApp.controller('AddItemController', function (ItemsService, $location) {
             padding: 100,
             background: '#fff url(assets/page.JPG)'
         }).then(function () {
-            ItemsService.addEventToDB(eventToSend);
+            UserService.addEventToDB(eventToSend);
             vm.clearAllInputs();
             $location.path('/today');
         });
@@ -55,7 +55,7 @@ myApp.controller('AddItemController', function (ItemsService, $location) {
             padding: 100,
             background: '#fff url(assets/page.JPG)'
         }).then(function () {
-            ItemsService.addTaskToDB(taskToSend);
+            UserService.addTaskToDB(taskToSend);
             vm.clearAllInputs();
             $location.path('/today');
         });
@@ -74,7 +74,7 @@ myApp.controller('AddItemController', function (ItemsService, $location) {
             padding: 100,
             background: '#fff url(assets/page.JPG)'
         }).then(function () {
-            ItemsService.addNoteToDB(noteToSend)
+            UserService.addNoteToDB(noteToSend)
             vm.clearAllInputs();
             $location.path('/today');
         });

@@ -1,4 +1,4 @@
-myApp.controller('TodayController', function (ItemsService, $location) {
+myApp.controller('TodayController', function (UserService, $location) {
     console.log('in today controller');
     var vm = this;
 
@@ -18,15 +18,15 @@ myApp.controller('TodayController', function (ItemsService, $location) {
         return array;
     };
 
-    vm.todaysDate = ItemsService.getToday;
+    vm.todaysDate = UserService.getToday;
 
-    vm.events = ItemsService.eventsToday;
-    vm.tasks = ItemsService.tasksToday;
-    vm.notes = ItemsService.notesToday;
+    vm.events = UserService.eventsToday;
+    vm.tasks = UserService.tasksToday;
+    vm.notes = UserService.notesToday;
 
-    ItemsService.getTodaysEventsFromDB();
-    ItemsService.getTodaysTasksFromDB();
-    ItemsService.getTodaysNotesFromDB();
+    UserService.getTodaysEventsFromDB();
+    UserService.getTodaysTasksFromDB();
+    UserService.getTodaysNotesFromDB();
 
     vm.cancelTask = function (id) {
         swal({
@@ -46,7 +46,7 @@ myApp.controller('TodayController', function (ItemsService, $location) {
                 'Deleted!',
                 'Your task has been deleted.',
                 'success',
-                ItemsService.removeTask(id)
+                UserService.removeTask(id)
             )
         }, function (dismiss) {
             // dismiss can be 'cancel', 'overlay',
@@ -79,7 +79,7 @@ myApp.controller('TodayController', function (ItemsService, $location) {
                 'Deleted!',
                 'Your note has been deleted.',
                 'success',
-                ItemsService.removeNote(id)
+                UserService.removeNote(id)
             )
         }, function (dismiss) {
             // dismiss can be 'cancel', 'overlay',
@@ -112,7 +112,7 @@ myApp.controller('TodayController', function (ItemsService, $location) {
                 'Deleted!',
                 'Your event has been deleted.',
                 'success',
-                ItemsService.removeEvent(id)
+                UserService.removeEvent(id)
             )
         }, function (dismiss) {
             // dismiss can be 'cancel', 'overlay',
@@ -129,26 +129,26 @@ myApp.controller('TodayController', function (ItemsService, $location) {
 
 
     vm.goToEditTask = function (id) {
-        ItemsService.taskToEdit.id = id;
+        UserService.taskToEdit.id = id;
         console.log('edit task', id);
         $location.path('/edit');
     };
 
     vm.goToEditEvent = function (id) {
-        ItemsService.eventToEdit.id = id;
+        UserService.eventToEdit.id = id;
         console.log('edit event', id);
         $location.path('/edit');
     };
 
     vm.goToEditNote = function (id) {
-        ItemsService.noteToEdit.id = id;
+        UserService.noteToEdit.id = id;
         console.log('edit note', id);
         $location.path('/edit');
     };
 
     vm.goToDoTask = function (id, pomos) {
-        ItemsService.taskToEdit.id = id;
-        ItemsService.taskToEdit.pomos = pomos;
+        UserService.taskToEdit.id = id;
+        UserService.taskToEdit.pomos = pomos;
         $location.path('/do');
     }
 

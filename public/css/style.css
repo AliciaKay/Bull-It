@@ -37,7 +37,7 @@ h5 {
 }
 
 th {
-   font-family: 'Fredericka the Great', cursive;
+    font-family: 'Architects Daughter', cursive;
     background-color: whitesmoke;
     text-align: center
 }
@@ -48,7 +48,7 @@ td {
 }
 
 a {
-font-family: 'Fredericka the Great', cursive;
+    font-family: 'Architects Daughter', cursive;
 }
 
 body {
@@ -70,7 +70,7 @@ label {
 }
 
 input[type="text"] {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Architects Daughter', cursive; 
     width: 50% !important;
     margin: auto;
 }

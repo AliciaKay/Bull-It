@@ -1,11 +1,11 @@
-myApp.controller('ThisWeekController', function (ItemsService, $location) {
+myApp.controller('ThisWeekController', function (UserService, $location) {
     console.log('in thisweekcontroller');
 
     var vm = this;
 
-    vm.events = ItemsService.eventsToday;
-    vm.tasks = ItemsService.tasksToday;
-    vm.notes = ItemsService.notesToday;
+    vm.events = UserService.eventsToday;
+    vm.tasks = UserService.tasksToday;
+    vm.notes = UserService.notesToday;
 
     vm.dateFinderT = new Date(vm.tasks.tasks.due);
     vm.dateFinderE = new Date(vm.events.events.date);
@@ -46,7 +46,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
         return true;
     };
 
-    vm.todaysDate = ItemsService.getToday;
+    vm.todaysDate = UserService.getToday;
 
     vm.getPomoNumber = function (num) {
         var array = [];
@@ -65,8 +65,8 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
     };
 
     vm.goToDoTask = function (id, pomos) {
-        ItemsService.taskToEdit.id = id;
-        ItemsService.taskToEdit.pomos = pomos;
+        UserService.taskToEdit.id = id;
+        UserService.taskToEdit.pomos = pomos;
         $location.path('/do');
     }
 
@@ -79,28 +79,28 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
         })
     }
 
-    vm.events = ItemsService.eventsToday;
-    vm.tasks = ItemsService.tasksToday;
-    vm.notes = ItemsService.notesToday;
+    vm.events = UserService.eventsToday;
+    vm.tasks = UserService.tasksToday;
+    vm.notes = UserService.notesToday;
 
-    ItemsService.getThisWeeksEventsFromDB();
-    ItemsService.getThisWeeksTasksFromDB();
-    ItemsService.getThisWeeksNotesFromDB();
+    UserService.getThisWeeksEventsFromDB();
+    UserService.getThisWeeksTasksFromDB();
+    UserService.getThisWeeksNotesFromDB();
 
     vm.goToEditTask = function (id) {
-        ItemsService.taskToEdit.id = id;
+        UserService.taskToEdit.id = id;
         console.log('edit task', id);
         $location.path('/edit');
     };
 
     vm.goToEditEvent = function (id) {
-        ItemsService.eventToEdit.id = id;
+        UserService.eventToEdit.id = id;
         console.log('edit event', id);
         $location.path('/edit');
     };
 
     vm.goToEditNote = function (id) {
-        ItemsService.noteToEdit.id = id;
+        UserService.noteToEdit.id = id;
         console.log('edit note', id);
         $location.path('/edit');
     };
@@ -123,7 +123,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
                 'Deleted!',
                 'Your task has been deleted.',
                 'success',
-                ItemsService.removeTask(id)
+                UserService.removeTask(id)
             )
         }, function (dismiss) {
             // dismiss can be 'cancel', 'overlay',
@@ -156,7 +156,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
                 'Deleted!',
                 'Your note has been deleted.',
                 'success',
-                ItemsService.removeNote(id)
+                UserService.removeNote(id)
             )
         }, function (dismiss) {
             // dismiss can be 'cancel', 'overlay',
@@ -189,7 +189,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
                 'Deleted!',
                 'Your event has been deleted.',
                 'success',
-                ItemsService.removeEvent(id)
+                UserService.removeEvent(id)
             )
         }, function (dismiss) {
             // dismiss can be 'cancel', 'overlay',

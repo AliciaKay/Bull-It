@@ -1,4 +1,4 @@
-myApp.controller('DoModeController', function (ItemsService, $location, $interval) {
+myApp.controller('DoModeController', function (UserService, $location, $interval) {
     console.log('in DoModeController');
 
     var vm = this;
@@ -10,9 +10,9 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
     
     vm.fillerHeight = 0; 
 
-    vm.taskId = ItemsService.taskToEdit.id;
+    vm.taskId = UserService.taskToEdit.id;
 
-    vm.taskItem = ItemsService.tasksToday.tasks.find(function (task) {
+    vm.taskItem = UserService.tasksToday.tasks.find(function (task) {
         if (task.id === vm.taskId) {
             console.log('vm.taskItem: ', task);
             return task;
@@ -30,7 +30,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
     };
 
     vm.goToEditTask = function (id) {
-        ItemsService.taskToEdit.id = id;
+        UserService.taskToEdit.id = id;
         console.log('edit task', id);
         $location.path('/edit');
     };
@@ -230,7 +230,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
             task.completed = vm.taskItem.completed;
         };
         console.log("task:", task);
-        ItemsService.editTask(vm.taskId, task);
+        UserService.editTask(vm.taskId, task);
     }
 });
 
