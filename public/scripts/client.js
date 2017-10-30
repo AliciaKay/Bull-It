@@ -18,6 +18,12 @@ myApp.config(function($routeProvider) {
     }).when('/do', {
         templateUrl: 'views/do.html',
         controller: 'DoModeController as DC'
+    }).when('/info', {
+        templateUrl: 'views/info.html',
+        controller: 'InfoController as IC'
+    }).when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutController as BC'
     }).otherwise('/');
     // $locationProvider.html5Mode(true);
   });

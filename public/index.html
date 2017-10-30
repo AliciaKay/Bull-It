@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <script src='vendors/jquery.min.js'></script>
- 
+
   <script src='vendors/angular.min.js'></script>
   <script src='vendors/angular-route.min.js'></script>
   <script src="vendors/sweetalert2.all.min.js"></script>
-  
+
   <script src='scripts/client.js'></script>
 
   <script src="scripts/services/itemsService.service.js"></script>
@@ -17,6 +17,7 @@
   <script src="scripts/controllers/add.controller.js"></script>
   <script src="scripts/controllers/edit.controller.js"></script>
   <script src="scripts/controllers/do.controller.js"></script>
+  <script src="scripts/controllers/info.controller.js"></script>
 
 
   <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
@@ -28,7 +29,8 @@
   <!-- <base href="/"> -->
   <title>Bull-It!</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Fredericka+the+Great|Homemade+Apple|Permanent+Marker|Satisfy" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Fredericka+the+Great|Homemade+Apple|Permanent+Marker|Satisfy"
+    rel="stylesheet">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
@@ -59,6 +61,14 @@
           </li>
           <li>
             <a ng-href="/#!/add">Add Items</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a ng-href="/#!/about">What Is a Bullet Journal?</a> 
+          </li>
+          <li>
+            <a ng-href="/#!/info">App Info</a>
           </li>
         </ul>
       </div>
