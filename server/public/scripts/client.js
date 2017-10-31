@@ -47,6 +47,8 @@ myApp.config(function ($routeProvider, $locationProvider) {
         }).when('/do', {
             templateUrl: 'views/templates/do.html',
             controller: 'DoModeController as DC'
-        }).otherwise('/');
+        }).otherwise({
+            redirectTo: '/home'
+        })
     // $locationProvider.html5Mode(true);
 });
