@@ -1,7 +1,8 @@
-myApp.controller('EditItemController', function (ItemsService, $location) {
+myApp.controller('EditItemController', function (ItemsService, AuthService, $location) {
     console.log('in editcontroller');
 
     var vm = this;
+    vm.user = AuthService.user;
     vm.todaysDate = ItemsService.getToday;
     vm.eventId = ItemsService.eventToEdit.id;
     vm.taskId = ItemsService.taskToEdit.id;

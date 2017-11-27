@@ -1,7 +1,8 @@
-myApp.controller('AddItemController', function (ItemsService, $location) {
+myApp.controller('AddItemController', function (ItemsService, AuthService, $location) {
     console.log('in addcontroller');
 
     var vm = this;
+    vm.user = AuthService.user;
     vm.todaysDate = ItemsService.getToday;
 
     vm.clearAllInputs = function () {
@@ -20,6 +21,7 @@ myApp.controller('AddItemController', function (ItemsService, $location) {
 
     vm.addEvent = function () {
         var eventToSend = {
+            userId: vm.user.id,
             title: vm.title,
             details: vm.details,
             date: new Date(vm.eventDate),
@@ -42,6 +44,7 @@ myApp.controller('AddItemController', function (ItemsService, $location) {
 
     vm.addTask = function () {
         var taskToSend = {
+            userId: vm.user.id,
             title: vm.title,
             details: vm.details,
             priority: parseInt(vm.priority),
@@ -63,6 +66,7 @@ myApp.controller('AddItemController', function (ItemsService, $location) {
 
     vm.addNote = function () {
         var noteToSend = {
+            userId: vm.user.id,
             title: vm.title,
             details: vm.details,
             date: new Date(vm.date)

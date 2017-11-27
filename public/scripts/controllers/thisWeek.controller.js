@@ -1,8 +1,8 @@
-myApp.controller('ThisWeekController', function (ItemsService, $location) {
+myApp.controller('ThisWeekController', function (ItemsService, AuthService, $location) {
     console.log('in thisweekcontroller');
 
     var vm = this;
-
+    vm.user = AuthService.user;
     vm.events = ItemsService.eventsToday;
     vm.tasks = ItemsService.tasksToday;
     vm.notes = ItemsService.notesToday;

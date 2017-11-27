@@ -1,6 +1,8 @@
-myApp.controller('TodayController', function (ItemsService, $location) {
+myApp.controller('TodayController', function (ItemsService, AuthService, $location) {
     console.log('in today controller');
     var vm = this;
+
+    vm.user = AuthService.user;
 
     vm.getPomoNumber = function (num) {
         var array = [];

@@ -1,8 +1,8 @@
-myApp.controller('DoModeController', function (ItemsService, $location, $interval) {
+myApp.controller('DoModeController', function (ItemsService, AuthService, $location, $interval) {
     console.log('in DoModeController');
 
     var vm = this;
-
+    vm.user = AuthService.user;
     vm.fillerIncrement = 300/((seconds*60) * 60);
     /*
       fillerIncrement variable stores the value by which fillerHeight should increase.
