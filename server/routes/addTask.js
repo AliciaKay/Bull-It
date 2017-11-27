@@ -34,7 +34,7 @@ router.post('/', function (req, res) {
       console.log('connection error: ', conErr)
       res.sendStatus(500);
     } else {
-      client.query('INSERT INTO tasks (title, details, priority, due, pomos) VALUES ($1,$2, $3, $4, $5)', [newTask.title, newTask.details, newTask.priority, newTask.due, newTask.pomos], function (queryErr, resultObj) {
+      client.query('INSERT INTO tasks (title, details, priority, due, pomos, user_id) VALUES ($1,$2, $3, $4, $5, $6)', [newTask.title, newTask.details, newTask.priority, newTask.due, newTask.pomos, newTask.userId], function (queryErr, resultObj) {
         done();
         if (queryErr) {
           console.log('broke it here', queryErr);

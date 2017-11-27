@@ -34,7 +34,7 @@ router.post('/', function (req, res) {
       console.log('connection error: ', conErr)
       res.sendStatus(500);
     } else {
-      client.query('INSERT INTO events (title, details, date, time, location) VALUES ($1,$2, $3, $4, $5)', [newEvent.title, newEvent.details, newEvent.date, newEvent.time, newEvent.location], function (queryErr, resultObj) {
+      client.query('INSERT INTO events (title, details, date, time, location, user_id) VALUES ($1,$2, $3, $4, $5, $6)', [newEvent.title, newEvent.details, newEvent.date, newEvent.time, newEvent.location, newEvent.userId], function (queryErr, resultObj) {
         done();
         if (queryErr) {
           console.log('broke it here', queryErr);

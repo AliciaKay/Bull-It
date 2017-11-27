@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
       console.log('Error connecting to the DB', error);
       res.sendStatus(500);
     } else {
-      client.query('select * from tasks where (extract(week from due)) = (extract(week from CURRENT_DATE)) order by due;', function (queryError, result) {
+      client.query('select * from tasks where (extract(week from due)) = (extract(week from CURRENT_DATE)) AND user_id = req.user.id order by due;', function (queryError, result) {
         done();
         if (queryError) {
           console.log('Error querying the DB', queryError);

@@ -31,7 +31,7 @@ router.delete('/:id', function (req, res) {
             console.log(conErr);
             res.sendStatus(500);
         } else {
-            client.query('DELETE FROM tasks WHERE id = $1;', [dbId], function (queryErr, result) {
+            client.query('DELETE FROM tasks WHERE id = $1 AND user_id = req.user.id;', [dbId], function (queryErr, result) {
                 done();
                 if (queryErr) {
                     res.sendStatus(500);
@@ -53,7 +53,7 @@ router.put('/:id', function (req, res) {
             res.sendStatus(500);
         } else {
             console.log('no connection error');
-            var queryString = 'UPDATE tasks SET title = $1, details = $2, priority = $3, due = $4, pomos = $5, completedpomos = $6, completed = $7 WHERE id = $8;';
+            var queryString = 'UPDATE tasks SET title = $1, details = $2, priority = $3, due = $4, pomos = $5, completedpomos = $6, completed = $7 WHERE id = $8 AND user_id = req.user.id;';
             client.query(queryString, [newTask.title, newTask.details, newTask.priority, newTask.due, newTask.pomos, newTask.completedpomos, newTask.completed, taskId], function (queryErr, resultObj) {
                 done();
                 if (queryErr) {

@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
       console.log('Error connecting to the DB', error);
       res.sendStatus(500);
     } else {
-      client.query('SELECT * FROM events WHERE date = CURRENT_DATE;', function (queryError, result) {
+      client.query('SELECT * FROM events WHERE user_id = req.user.id AND date = CURRENT_DATE;', function (queryError, result) {
         done();
         if (queryError) {
           console.log('Error querying the DB', error);
@@ -33,7 +33,7 @@ router.delete('/:id', function(req,res){
           console.log(conErr);
           res.sendStatus(500);
       } else {
-          client.query('DELETE FROM events WHERE id = $1;', [dbId], function(queryErr, result){
+          client.query('DELETE FROM events WHERE user_id = req.user.id AND id = $1;', [dbId], function(queryErr, result){
               done();
               if(queryErr){
                   res.sendStatus(500);
@@ -58,7 +58,7 @@ router.put('/:id', function (req, res) {
           res.sendStatus(500);
       } else {
           console.log('no connection error');
-          var queryString = 'UPDATE events SET title = $1, details = $2, date = $3, time = $4, location = $5 WHERE id = $6;';
+          var queryString = 'UPDATE events SET title = $1, details = $2, date = $3, time = $4, location = $5 WHERE id = $6 AND user_id = req.user.id;';
           client.query(queryString, [newEvent.title, newEvent.details, newEvent.date, newEvent.time, newEvent.location, eventId], function(queryErr, resultObj) {
               done();
               if (queryErr) {
