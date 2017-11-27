@@ -32,7 +32,10 @@ myApp.factory('UserService', function($http, $location){
         });
       }
     };
+
     self.getToday = new Date();
+
+    
     // // not static!!!! 
     // // dynamic data MUST BE IN AN OBJECT
   
