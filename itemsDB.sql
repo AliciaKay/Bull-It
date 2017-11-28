@@ -1,3 +1,9 @@
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	username VARCHAR(20),
+	password VARCHAR(200)
+	);
+
 CREATE TABLE tasks (
 	id SERIAL PRIMARY KEY,
 	title VARCHAR(255),
@@ -6,7 +12,8 @@ CREATE TABLE tasks (
 	due DATE,
 	pomos INTEGER,
 	completedpomos INTEGER DEFAULT 0,
-	completed BOOLEAN DEFAULT false
+	completed BOOLEAN DEFAULT false,
+	user_id INTEGER
 	);
 	
 CREATE TABLE events (
@@ -15,14 +22,16 @@ CREATE TABLE events (
 	details VARCHAR(1000),
 	date DATE,
 	time TIME,
-	location VARCHAR(255)
+	location VARCHAR(255),
+	user_id INTEGER
 	);
 	
 CREATE TABLE notes (
 	id SERIAL PRIMARY KEY,
 	title VARCHAR(255),
 	details VARCHAR(1000),
-	date DATE DEFAULT CURRENT_TIMESTAMP
+	date DATE DEFAULT CURRENT_TIMESTAMP,
+	user_id INTEGER
 	);
 	
 INSERT INTO tasks
