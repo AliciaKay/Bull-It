@@ -32,7 +32,7 @@ myApp.controller('AddItemController', function (UserService, $location) {
             width: 600,
             padding: 100,
             background: '#fff url(assets/page.JPG)'
-        }).then(function () {
+        }).then(function (res) {
             UserService.addEventToDB(eventToSend);
             vm.clearAllInputs();
             $location.path('/today');
@@ -46,7 +46,8 @@ myApp.controller('AddItemController', function (UserService, $location) {
             details: vm.details,
             priority: parseInt(vm.priority),
             due: new Date(vm.due),
-            pomos: vm.pomos
+            pomos: vm.pomos,
+            userId: UserService.userObject.userId
         };
         console.log('in add controller addTask function', taskToSend);
         swal({
@@ -54,7 +55,7 @@ myApp.controller('AddItemController', function (UserService, $location) {
             width: 600,
             padding: 100,
             background: '#fff url(assets/page.JPG)'
-        }).then(function () {
+        }).then(function (res) {
             UserService.addTaskToDB(taskToSend);
             vm.clearAllInputs();
             $location.path('/today');
@@ -73,8 +74,8 @@ myApp.controller('AddItemController', function (UserService, $location) {
             width: 600,
             padding: 100,
             background: '#fff url(assets/page.JPG)'
-        }).then(function () {
-            UserService.addNoteToDB(noteToSend)
+        }).then(function (res) {
+            UserService.addNoteToDB(noteToSend);
             vm.clearAllInputs();
             $location.path('/today');
         });
