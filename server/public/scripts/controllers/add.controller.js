@@ -24,7 +24,8 @@ myApp.controller('AddItemController', function (UserService, $location) {
             details: vm.details,
             date: new Date(vm.eventDate),
             time: vm.eventTime.toLocaleTimeString(),
-            location: vm.eventLocation
+            location: vm.eventLocation,
+            userId: UserService.userObject.userId
         };
         console.log('in add controller addEvent function', eventToSend);
         swal({
@@ -66,7 +67,8 @@ myApp.controller('AddItemController', function (UserService, $location) {
         var noteToSend = {
             title: vm.title,
             details: vm.details,
-            date: new Date(vm.date)
+            date: new Date(vm.date),
+            userId: UserService.userObject.userId
         };
         console.log('in add controller addNote function', noteToSend);
         swal({
