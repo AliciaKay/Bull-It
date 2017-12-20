@@ -2,7 +2,6 @@ myApp.service('UserService', function ($http, $location) {
   console.log('UserService Loaded');
 
   var self = this;
-  var userObject = {};
 
   self.getToday = new Date();
 
@@ -152,16 +151,16 @@ myApp.service('UserService', function ($http, $location) {
     });
   };
 
-  self.userObject = userObject;
+  self.userObject = {};
 
   self.getuser = function () {
     console.log('UserService -- getuser');
     $http.get('/user').then(function (response) {
       if (response.data.username) {
         // user has a curret session on the server
-        userObject.userName = response.data.username;
-        userObject.userId = response.data.userId;
-        console.log('UserService -- getuser -- User Data: ', userObject.userName);
+        self.userObject.userName = response.data.username;
+        self.userObject.userId = response.data.userId;
+        console.log('UserService -- getuser -- User Data: ', self.userObject.userName);
       } else {
         console.log('UserService -- getuser -- failure');
         // user has no session, bounce them back to the login page

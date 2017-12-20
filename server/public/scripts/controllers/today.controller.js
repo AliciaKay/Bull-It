@@ -2,6 +2,8 @@ myApp.controller('TodayController', function (UserService, $location) {
     console.log('in today controller');
     var vm = this;
 
+    UserService.getuser();
+
     vm.getPomoNumber = function (num) {
         var array = [];
         for (var i = null; i < num; i++) {
@@ -27,6 +29,7 @@ myApp.controller('TodayController', function (UserService, $location) {
     UserService.getTodaysEventsFromDB();
     UserService.getTodaysTasksFromDB();
     UserService.getTodaysNotesFromDB();
+    
 
     vm.cancelTask = function (id) {
         swal({
