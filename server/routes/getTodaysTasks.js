@@ -2,7 +2,7 @@ var router = require('express').Router();
 var pool = require('../modules/pool');
 
 router.get('/', function (req, res) {
-    console.log('in router.get');
+    console.log('in router.get, req.user.id: ', req.user.id);
     pool.connect(function (error, client, done) {
         if (error) {
             console.log('Error connecting to the DB', error);
@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
             client.query('SELECT * FROM tasks WHERE due = CURRENT_DATE AND user_id = req.user.id ORDER BY priority;', function (queryError, result) {
                 done();
                 if (queryError) {
-                    console.log('Error querying the DB', error);
+                    console.log('Error querying the DB', queryError);
                     res.sendStatus(500);
                 } else {
                     console.log('Got rows from the DB:', result.rows);
@@ -34,6 +34,7 @@ router.delete('/:id', function (req, res) {
             client.query('DELETE FROM tasks WHERE id = $1 AND user_id = req.user.id;', [dbId], function (queryErr, result) {
                 done();
                 if (queryErr) {
+                    console.log('Error querying the DB', queryError);
                     res.sendStatus(500);
                 } else {
                     res.sendStatus(202);
@@ -57,6 +58,7 @@ router.put('/:id', function (req, res) {
             client.query(queryString, [newTask.title, newTask.details, newTask.priority, newTask.due, newTask.pomos, newTask.completedpomos, newTask.completed, taskId], function (queryErr, resultObj) {
                 done();
                 if (queryErr) {
+                    console.log('Error querying the DB', queryError);
                     res.sendStatus(500)
                 } else {
                     res.sendStatus(201)
