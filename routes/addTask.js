@@ -1,9 +1,11 @@
 var router = require('express').Router();
 var pool = require('../modules/pool');
+const { connect } = require('./addNote');
 
  router.get('/', function (req, res) {
    console.log('in router.get tasks');
    pool.connect(function (error, client, done) {
+     console.log("attempting to connect...");
      if (error) {
        console.log('Error connecting to the DB', error);
        res.sendStatus(500);
@@ -30,6 +32,7 @@ router.post('/', function (req, res) {
   var newTask = req.body;
   //connect the pool file and tell the client to insert the posted item to the DB, using the variable and the object's properties
   pool.connect(function (conErr, client, done) {
+    console.log("attempting to connect...");
     if (conErr) {
       console.log('connection error: ', conErr)
       res.sendStatus(500);
