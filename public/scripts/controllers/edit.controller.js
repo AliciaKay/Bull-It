@@ -6,6 +6,7 @@ myApp.controller('EditItemController', function (ItemsService, $location) {
     vm.eventId = ItemsService.eventToEdit.id;
     vm.taskId = ItemsService.taskToEdit.id;
     vm.noteId = ItemsService.noteToEdit.id;
+   
 
     vm.eventItem = ItemsService.eventsToday.events.find(function(event) {
         if (event.id === vm.eventId) {

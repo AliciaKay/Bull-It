@@ -2,15 +2,12 @@ var Pool = require('pg').Pool;
 
 
 const config = {
+  user: process.env.PGUSER,
   host: process.env.PGHOST,
-  // Do not hard code your username and password.
-  // Consider using Node environment variables.
-  user: process.env.PGUSER,     
-  password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
   port: process.env.PGPORT,
-  ssl: true,
-  max: 20
+  sslmode: 'require'
 };
 
 var ourPool = new Pool(config);

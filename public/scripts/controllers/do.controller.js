@@ -36,7 +36,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
     };
 
     vm.completeTaskAlert = function(){
-        swal({
+        new swal({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             type: 'warning',
@@ -49,7 +49,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false
         }).then(function () {
-            swal(
+            new swal(
                 'Complete!',
                 'Your task has been completed.',
                 'success',
@@ -60,7 +60,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
             // dismiss can be 'cancel', 'overlay',
             // 'close', and 'timer'
             if (dismiss === 'cancel') {
-                swal(
+                new swal(
                     'Cancelled',
                     'Your task is safe :)',
                     'error'
@@ -154,7 +154,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
                     seconds = 60 * vm.restTime;
                     
                     vm.timerCountdown = toTimerOutput(seconds);
-                    swal({
+                    new swal({
                         title: 'Break Time!',
                         width: 600,
                         padding: 100,
@@ -171,7 +171,7 @@ myApp.controller('DoModeController', function (ItemsService, $location, $interva
                 seconds = 60 * vm.workTime;
                 vm.timerCountdown = toTimerOutput(seconds);
                 vm.fillerHeight = 0;
-                swal({
+                new swal({
                     title: 'Work Time!',
                     width: 600,
                     padding: 100,

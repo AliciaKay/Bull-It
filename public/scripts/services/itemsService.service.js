@@ -32,7 +32,7 @@ myApp.service('ItemsService', function ($http) {
       url: '/addTask',
       data: taskListObject
     }).then(function () {
-       self.getTasksFromDB();
+       self.getTodaysTasksFromDB();
     });
   };
 
@@ -42,7 +42,7 @@ myApp.service('ItemsService', function ($http) {
       url: '/addNote',
       data: noteListObject
     }).then(function () {
-       self.getNotesFromDB();
+       self.getTodaysNotesFromDB();
     });
   };
 

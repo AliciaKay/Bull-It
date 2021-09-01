@@ -27,7 +27,7 @@ myApp.controller('AddItemController', function (ItemsService, $location) {
             location: vm.eventLocation
         };
         console.log('in add controller addEvent function', eventToSend);
-        swal({
+        new swal({
             title: 'Added to Your Events',
             width: 600,
             padding: 100,
@@ -49,7 +49,7 @@ myApp.controller('AddItemController', function (ItemsService, $location) {
             pomos: vm.pomos
         };
         console.log('in add controller addTask function', taskToSend);
-        swal({
+        new swal({
             title: 'Added to Your Tasks',
             width: 600,
             padding: 100,
@@ -68,7 +68,7 @@ myApp.controller('AddItemController', function (ItemsService, $location) {
             date: new Date(vm.date)
         };
         console.log('in add controller addNote function', noteToSend);
-        swal({
+        new swal({
             title: 'Added to Your Notes',
             width: 600,
             padding: 100,

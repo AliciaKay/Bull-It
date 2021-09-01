@@ -71,7 +71,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
     }
 
     vm.cannotDoTask = function() {
-        swal({
+        new swal({
             title: 'Once a task is completed, it cannot be timed again.',
             width: 600,
             padding: 100,
@@ -106,7 +106,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
     };
 
     vm.cancelTask = function (id) {
-        swal({
+        new swal({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             type: 'warning',
@@ -119,7 +119,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false
         }).then(function () {
-            swal(
+           new swal(
                 'Deleted!',
                 'Your task has been deleted.',
                 'success',
@@ -129,7 +129,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
             // dismiss can be 'cancel', 'overlay',
             // 'close', and 'timer'
             if (dismiss === 'cancel') {
-                swal(
+                new swal(
                     'Cancelled',
                     'Your task is safe :)',
                     'error'
@@ -139,7 +139,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
     };
 
     vm.cancelNote = function (id) {
-        swal({
+        new swal({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             type: 'warning',
@@ -152,7 +152,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false
         }).then(function () {
-            swal(
+            new swal(
                 'Deleted!',
                 'Your note has been deleted.',
                 'success',
@@ -162,7 +162,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
             // dismiss can be 'cancel', 'overlay',
             // 'close', and 'timer'
             if (dismiss === 'cancel') {
-                swal(
+                new swal(
                     'Cancelled',
                     'Your note is safe :)',
                     'error'
@@ -172,7 +172,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
     };
 
     vm.cancelEvent = function (id) {
-        swal({
+        new swal({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             type: 'warning',
@@ -185,7 +185,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
             cancelButtonClass: 'btn btn-danger',
             buttonsStyling: false
         }).then(function () {
-            swal(
+            new swal(
                 'Deleted!',
                 'Your event has been deleted.',
                 'success',
@@ -195,7 +195,7 @@ myApp.controller('ThisWeekController', function (ItemsService, $location) {
             // dismiss can be 'cancel', 'overlay',
             // 'close', and 'timer'
             if (dismiss === 'cancel') {
-                swal(
+                new swal(
                     'Cancelled',
                     'Your event is safe :)',
                     'error'
